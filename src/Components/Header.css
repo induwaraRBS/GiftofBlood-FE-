@@ -1,0 +1,36 @@
+.header{
+   
+    position:sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 0.1px solid lightgray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    z-index: 999;
+    background-color: aliceblue;
+
+}
+.header__left >img{
+
+    padding: 10px;
+    object-fit: contain;
+    height: 50px;
+    width: 50px;
+
+}
+.header__left{
+    display: flex;
+}
+
+.header__text{
+    display: flex;
+    align-items: center;
+    margin-right: 0px;
+    margin-top: 10px;
+}
+.header__right{
+    display: flex;
+}
+
