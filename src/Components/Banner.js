@@ -14,12 +14,12 @@ function Banner() {
         <p>lorem abdjanw ajnwdjnawdm ajunwdnaiwdanwdjnanadwlnadiald <br />
           ajnwdnalwdnlaidwl djnwawlndilanwdila ajnwldnalwndilawndli</p>
 
-          <Button className='banner_button1' color="danger" outline  size="lg">
+          <Button className='banner_button1' color="danger"  size="lg">
               Register
               </Button>
 
-           <Button className='banner_button2' color="danger" outline  size="lg">
-              Secondary
+           <Button className='banner_button2' color="danger"   size="lg">
+              Login
               </Button>    
 
       </div></>

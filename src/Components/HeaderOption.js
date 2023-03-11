@@ -1,12 +1,36 @@
 import React from 'react'
 import './HeaderOption.css';
 
-function HeaderOption({title}) {
+function HeaderOption() {
   return (
-    <div className='headerOption'>
-        <h3 className='headerOption__title'>{title}</h3>
+    <nav className='navbar'>
+        <ul>
+          <li classname="nav-item" >
+            <a classname="nav-link" href='#'>Home</a>
+          </li>
+        </ul>
+        <ul>
+          <li classname="nav-item">
+            <a  classname="nav-link"href='#'>About Us</a>
+          </li>
+        </ul>
+        <ul>
+          <li classname="nav-item">
+            <a classname="nav-link" href='#'>Contact</a>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <a classname="nav-link" href='#'>Profile</a>
+          </li>
+        </ul>
+        <ul>
+          <li classname="nav-item">
+            <a classname="nav-link" href='#'>Register</a>
+          </li>
+        </ul>
       
-    </div>
+    </nav>
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./Header.css";
 import HeaderOption from './HeaderOption';
-
+// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 
 function Header() {
@@ -17,12 +17,9 @@ function Header() {
             
         </div>
         <div className='header__right'>
-          <HeaderOption title = 'Home'/>
-          <HeaderOption title = 'About us'/>
-          <HeaderOption title = 'News'/>
-          <HeaderOption title = 'Contact'/>
-          <HeaderOption title = 'Login'/>
-          <HeaderOption title = 'Register'/>
+           <HeaderOption/>
+          
+
         </div>
 
     </div>
