@@ -6,6 +6,9 @@ import Home from './Pages/Home/Home';
 import Header from './Components/Header';
 import About from './Pages/Aboutus/About';
 import Signup from './Pages/Signup/Signup';
+import News from './Pages/News/News';
+import Contact from './Pages/Contact/Contact';
+import Profile from './Pages/Profile/Profile';
 
 function App() {
   return (
@@ -15,6 +18,9 @@ function App() {
             <Route path='/about' element={<About/>}/>
             <Route path='/login' element={<LoginJs />}/>
             <Route path='/signup' element={<Signup/>}/>
+            <Route path ='/news' element={<News/>}/>
+            <Route path='/contact' element={<Contact/>}/>
+            <Route path ='/profile' element={<Profile/>}/>
             <Route exact path="/" element={<Home />} />
           </Routes>
         </Router>

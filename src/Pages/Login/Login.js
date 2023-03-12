@@ -1,12 +1,11 @@
-import { Icon } from '@mui/material';
 import React from 'react'
 import "./Login.css";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 
 function Login() {
 
   const loginToProfile = () => {
-    e.preventDefault();
+    // e.preventDefault();
   };
 
   const register = () => {};

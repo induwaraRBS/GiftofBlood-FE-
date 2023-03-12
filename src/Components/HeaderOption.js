@@ -29,6 +29,11 @@ function HeaderOption() {
             <a classname="nav-link" href='#'>Register</a>
           </li>
         </ul>
+        <ul>
+          <li classname="nav-item">
+            <a classname="nav-link" href='#'>News</a>
+          </li>
+        </ul>
       
     </nav>
   )

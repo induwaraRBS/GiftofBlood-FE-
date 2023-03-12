@@ -1,0 +1,94 @@
+.signup{
+    display:grid;
+    flex-direction: row;
+    place-items:center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.signup >.image1{
+    height:20px ;
+}
+.signup>img{
+    object-fit: contain;
+    height: 70px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    }
+
+.signup>form >.profile{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup> form > .profile >input{
+    width:350px;
+    height: 50px;
+    font-size:20px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-color: brown;
+}
+
+.signup >form >.blood{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup> form > .blood >input{
+    width:350px;
+    height: 50px;
+    font-size:20px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-color: brown;
+}
+
+.signup> form > .blood > select{
+    width:350px;
+    height: 50px;
+    font-size:20px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-color: brown;
+}
+
+.signup>form >.account{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup> form > .account >input{
+    width:350px;
+    height: 50px;
+    font-size:20px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border-color: brown;
+}
+.Signup_logo{
+    display: flex;
+    align-items: center;
+    margin-right: 0px;
+    margin-top: 10px;
+}
+
+.signup>form>button{
+    width: 365px;
+    height: 50px;
+    font-size:large;
+    color: aliceblue;
+    background-color: red;
+    border-radius: 5px;
+}
+/* .login_register{
+    color: red;
+    cursor: pointer;
+} */
