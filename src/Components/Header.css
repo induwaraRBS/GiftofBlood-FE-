@@ -32,5 +32,8 @@
 }
 .header__right{
     display: flex;
+    font-size: 20px;
+    font-weight: 500px;
+    gap: 2rem;
 }
 

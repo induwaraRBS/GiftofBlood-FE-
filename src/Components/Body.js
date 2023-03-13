@@ -13,7 +13,7 @@ function Body() {
         <Container>
           <Row>
           <Col md={3}>
-                  <Card className='card'
+                  <Card className='cards'
               style={{
                 width: '20rem'
               }}
@@ -45,7 +45,7 @@ function Body() {
               </Card>
             </Col>
             <Col md={3}>
-                  <Card className='card'
+                  <Card className='cards'
               style={{
                 width: '20rem'
               }}
@@ -77,7 +77,7 @@ function Body() {
               </Card>
             </Col>
             <Col md={3}>
-                  <Card className='card'
+                  <Card className='cards'
               style={{
                 width: '20rem'
               }}
@@ -109,7 +109,7 @@ function Body() {
               </Card>
             </Col>
             <Col md={3}>
-                  <Card className='card'
+                  <Card className='cards'
               style={{
                 width: '20rem'
               }}

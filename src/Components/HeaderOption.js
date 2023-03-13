@@ -5,33 +5,33 @@ function HeaderOption() {
   return (
     <nav className='navbar'>
         <ul>
-          <li classname="nav-item" >
-            <a classname="nav-link" href='#'>Home</a>
+          <li classname="active" >
+            <a classname="nav-link" href='/'>Home</a>
           </li>
         </ul>
         <ul>
-          <li classname="nav-item">
-            <a  classname="nav-link"href='#'>About Us</a>
-          </li>
-        </ul>
-        <ul>
-          <li classname="nav-item">
-            <a classname="nav-link" href='#'>Contact</a>
+          <li >
+            <a  classname="nav-link"href='/about'>About Us</a>
           </li>
         </ul>
         <ul>
           <li>
-            <a classname="nav-link" href='#'>Profile</a>
+            <a classname="nav-link" href='/contact'>Contact</a>
           </li>
         </ul>
         <ul>
-          <li classname="nav-item">
-            <a classname="nav-link" href='#'>Register</a>
+          <li>
+            <a classname="nav-link" href='/profile'>Profile</a>
           </li>
         </ul>
         <ul>
-          <li classname="nav-item">
-            <a classname="nav-link" href='#'>News</a>
+          <li >
+            <a classname="nav-link" href='/signup'>Register</a>
+          </li>
+        </ul>
+        <ul>
+          <li >
+            <a classname="nav-link" href='/news'>News</a>
           </li>
         </ul>
       

@@ -17,9 +17,22 @@
     object-fit: contain;
     margin-left: 10px;
     margin-top: 18px;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 800;
+    color: inherit;
+    text-decoration: none;
+    height: 100%;
+    align-items: center;
 }
 
-.li{
+.navbar li.active{
+        color: red;
+}
+
+.navbar ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap:1rem;
 }

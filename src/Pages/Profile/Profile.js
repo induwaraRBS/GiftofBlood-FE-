@@ -1,8 +1,11 @@
 import React from 'react'
+import './Profile.css';
 
 function Profile() {
   return (
-    <div>Profile</div>
+    <div className='profile'>
+        
+    </div>
   )
 }
 

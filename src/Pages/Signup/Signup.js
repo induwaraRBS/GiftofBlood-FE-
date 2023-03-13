@@ -15,6 +15,7 @@ function Signup() {
 
           <form>
             <div className='profile'>
+             
             <h3>Profile Information</h3>
             <input placeholder='First name' type="text"/>
 
@@ -27,6 +28,7 @@ function Signup() {
             <input placeholder='Password' type="Password"/>
 
             <input placeholder='Re-Enter Password' type="password"/>
+          
             </div>
 
             <div className='blood'>
