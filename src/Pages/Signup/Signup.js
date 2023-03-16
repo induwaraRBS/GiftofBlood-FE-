@@ -1,92 +1,156 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Signup.css";
+import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
+import { FormGroup, Label, Input, Button } from 'reactstrap';
+import Login from '../Login/Login';
 
-function Signup() {
+
+const RegisterPage = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    bloodGroup: '',
+    contact: '',
+    nicNumber: '',
+    dateOfBirth: '',
+    email:'',
+    password:''
+  });
+
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log(formData); // Replace with actual submission logic
+  };
 
   const login = () => {};
 
   return (
-    <div className='signup'>
-      <img classname= "image1" src='https://previews.123rf.com/images/yupiramos/yupiramos1607/yupiramos160701221/59263338-blood-drop-icon-blood-donation-and-transfusion-theme-design-vector-illustration-.jpg' alt='Logo'/>
-      <div className='Signup_logo'>
-      <h1>GIFT OF BLOOD</h1>
+    <div className="register-page">
+      <div className="register-box">
+        <h2>Create Your Account</h2>< AccountCircleSharpIcon />
+       
+        <form onSubmit={handleSubmit}>
+          <h5>Profile Information</h5>
+          <FormGroup>
+            <Label for="firstName">First Name</Label>
+            <Input
+              type="text"
+              name="firstName"
+              id="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder="Enter your first name"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="lastName">Last Name</Label>
+            <Input
+              type="text"
+              name="lastName"
+              id="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Enter your last name"
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <Label for="contact">Contact</Label>
+            <Input
+              type="tel"
+              name="contact"
+              id="contact"
+              value={formData.contact}
+              onChange={handleChange}
+              placeholder="Enter your contact number"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="dateOfBirth">Date of Birth</Label>
+            <Input
+              type="date"
+              name="dateOfBirth"
+              id="dateOfBirth"
+              value={formData.dateOfBirth}
+              onChange={handleChange}
+            />
+          </FormGroup>
+
+          <h5>Blood Information</h5>
+
+          <FormGroup>
+            <Label for="bloodGroup">Blood Group</Label>
+            <Input
+              type="select"
+              name="bloodGroup"
+              id="bloodGroup"
+              value={formData.bloodGroup}
+              onChange={handleChange}
+            >
+              <option value="">-- Select your blood group --</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+            </Input>
+          </FormGroup>
+
+          <h5>Account Verfications</h5>
+          <FormGroup>
+            <Label for="email">Email</Label>
+            <Input 
+              type='email'
+              name='email'
+              id='email'
+              placeholder='Enter your email'
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </FormGroup>
+          
+          <FormGroup>
+            <Label for="nicNumber">NIC Number</Label>
+            <Input
+              type="text"
+              name="nicNumber"
+              id="nicNumber"
+              value={formData.nicNumber}
+              onChange={handleChange}
+              placeholder="Enter your NIC number"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password</Label>
+            <Input
+            type='password'
+            name='password'
+            id="password"
+            placeholder='Enter a password'
+            value={formData.password}
+            onChange={handleChange}/>
+          </FormGroup>
+          
+         
+          <Button color="danger" block>Sign Up</Button>
+          <Label>Already Have an</Label>
+          <span className='login_register' onClick={Login}> Account?</span>
+        </form>
       </div>
-         <img src='https://www.freeiconspng.com/thumbs/profile-icon-png/am-a-19-year-old-multimedia-artist-student-from-manila--21.png' alt='Avatar'/>
-
-          <form>
-            <div className='profile'>
-             
-            <h3>Profile Information</h3>
-            <input placeholder='First name' type="text"/>
-
-            <input placeholder='Last name' type="text"/>
-
-            <input placeholder='Contact Number' type="text"/>
-
-            <input placeholder='Email' type="email"/>
-
-            <input placeholder='Password' type="Password"/>
-
-            <input placeholder='Re-Enter Password' type="password"/>
-          
-            </div>
-
-            <div className='blood'>
-            <h3>Blood Informations</h3>
-            
-            <input placeholder='Town' type="text"/>
-
-            <input placeholder='Date Of Birth' type="Date"/>
-
-            <select placeholder='Blood Type'  name="select" type="select" >
-                                          <option selected>
-                                                Blood Type
-                                            </option>
-                                          <option>
-                                                 A+
-                                            </option>
-                                          <option>
-                                                A-
-                                            </option>
-                                          <option>
-                                                B+
-                                            </option>
-                                          <option>
-                                                B-
-                                            </option>
-                                            <option>
-                                                 O+
-                                            </option>
-                                            <option>
-                                                 O-
-                                            </option>
-                                            <option>
-                                                 AB+
-                                            </option>
-                                            <option>
-                                                 AB-
-                                            </option>
-            </select>  
-            </div>
-
-            <div className='account'>
-
-              <h3>Account Verification</h3>
-              
-              <input placeholder='NIC Card Number' type="text"/>
-
-              <input placeholder=""></input>
-            </div>
-
-            <button type='submit' onClick={login}>Signup</button>
-          </form>
-
-          
-        
-
-      
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default RegisterPage;

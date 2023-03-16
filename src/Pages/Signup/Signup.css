@@ -1,95 +1,75 @@
-.signup{
-    display:grid;
-    flex-direction: row;
-    place-items:center;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 100px;
-    padding-bottom: 100px;
-}
-
-.signup >.image1{
-    
-    height:20px ;
-}
-.signup>img{
-    object-fit: contain;
-    height: 70px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    }
-
-.signup>form >.profile{
+.register-page {
+  
+    background-color: #f3f6f8;
+    height: 129vh;
     display: flex;
-    flex-direction: column;
-}
-
-.signup> form > .profile>input{
-    width:350px;
-    height: 50px;
-    font-size:20px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border-color: brown;
-}
-
-.signup >form >.blood{
-    display: flex;
-    flex-direction: column;
-}
-
-.signup> form > .blood >input{
-    width:350px;
-    height: 50px;
-    font-size:20px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border-color: brown;
-}
-
-.signup> form > .blood > select{
-    width:350px;
-    height: 50px;
-    font-size:20px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border-color: brown;
-}
-
-.signup>form >.account{
-    display: flex;
-    flex-direction: column;
-}
-
-.signup> form > .account >input{
-    width:350px;
-    height: 50px;
-    font-size:20px;
-    padding-left: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border-color: brown;
-}
-.Signup_logo{
-    display: flex;
+    justify-content: center;
     align-items: center;
-    margin-right: 0px;
+  }
+  
+  .register-box {
     margin-top: 10px;
-}
-
-.signup>form>button{
-    width: 365px;
-    height: 50px;
-    font-size:large;
-    color: aliceblue;
-    background-color: red;
-    border-radius: 5px;
-}
-/* .login_register{
-    color: red;
+    background-color: #ffffff;
+    width: 400px;
+    padding: 40px;
+    border-radius: 8px;
+    border: #b50000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .register-box h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* text-align: center; */
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .form-group input,
+  .form-group select {
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  .form-group select {
+    appearance: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath fill='%23000000' d='M0 0l4 5 4-5z'/%3E%3C/svg%3E") no-repeat;
+    background-position: right 8px center;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #0073b1;
+    box-shadow: 0 0 0 2px rgba(0, 115, 177, 0.1);
+  }
+  
+  .btn-primary {
+    background-color: #b50000;
+    border-color:  #b50000;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+  }
+  
+  .btn-primary:hover {
+    background-color: #b50000;
+    border-color:  #b50000;
+  }
+  .login_register{
+    color: #b50000;
     cursor: pointer;
-} */
+  }

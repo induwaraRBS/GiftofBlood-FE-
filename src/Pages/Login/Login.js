@@ -1,43 +1,56 @@
-import React from 'react'
+import React,{useState} from 'react'
 import "./Login.css";
+import LoginIcon from '@mui/icons-material/Login';
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-function Login() {
-
-  const loginToProfile = () => {
-    // e.preventDefault();
+  const handleSubmit = (event) => {
+    // event.preventDefault();
+    // Add your login logic here
   };
 
-  const register = () => {};
+const register = () => {};
+       
+       return (
+       
+       
 
-  return (
-    <div className='login'>
-    
-      <img src='https://previews.123rf.com/images/yupiramos/yupiramos1607/yupiramos160701221/59263338-blood-drop-icon-blood-donation-and-transfusion-theme-design-vector-illustration-.jpg' alt='Logo'/>
-      <div className='login_logo'>
-      <h1>GIFT OF BLOOD</h1>
-      </div>
-         <img src='https://www.freeiconspng.com/thumbs/profile-icon-png/am-a-19-year-old-multimedia-artist-student-from-manila--21.png' alt='Avatar'/>
+         <div className="login-page">
+             <div className="login-box">
+               <h2>Sign in </h2><LoginIcon></LoginIcon>
+               <Form onSubmit={handleSubmit}>
+                 <FormGroup>
+                   <Label for="email">Email</Label>
+                   <Input
+                     type="email"
+                     name="email"
+                     id="email"
+                     placeholder="Enter your email"
+                     value={email}
+                     onChange={(e) => setEmail(e.target.value)} />
+                 </FormGroup>
+                 <FormGroup>
+                   <Label for="password">Password</Label>
+                   <Input
+                     type="password"
+                     name="password"
+                     id="password"
+                     placeholder="Enter your password"
+                     value={password}
+                     onChange={(e) => setPassword(e.target.value)} />
+                 </FormGroup>
+                 <Button color="danger">Login</Button>
+                 <Label>Don't have an </Label>
+                 <span className='signup' onClick={register}> Account?</span>
+               </Form>
+             </div>
+           </div>
+  );
+};
 
-          <form>
-            <input placeholder='Full name' type="text"/>
-
-            <input placeholder='Profile pic' type="text"/>
-
-            <input placeholder='Password' type="password"/>
-
-            <input placeholder='Email' type="email"/>
-           
-            <button type='submit' onClick={loginToProfile}>Login</button>
-          </form>
-
-          <p>
-            Don't have an account?
-            <span className='login_register' onClick={register}> Register Now</span>
-          </p>
-
-    </div>
-  )
-}
-
-export default Login
+export default Login;       
+     
+     
