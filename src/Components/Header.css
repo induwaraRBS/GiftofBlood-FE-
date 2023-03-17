@@ -9,7 +9,8 @@
     padding-bottom: 10px;
     width: 100%;
     z-index: 999;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    background: linear-gradient(-100deg,white 10%,rgb(255, 20, 20) 90%);
 
 }
 .header__left >img{
