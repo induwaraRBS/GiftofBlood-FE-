@@ -22,7 +22,8 @@ function Body() {
           <Col md={3}>
             <Card className='card1'
               style={{
-                width: '20rem'
+                width: '20rem',
+                height:'28rem'
               }}
             >
               <img
@@ -54,7 +55,8 @@ function Body() {
           <Col md={3}>
             <Card className='card2'
               style={{
-                width: '20rem'
+                width: '20rem',
+                height:'28rem'
               }}
             >
               <img
@@ -87,7 +89,7 @@ function Body() {
             <Card className='card3'
               style={{
                 width: '20rem',
-                height: "28rem"
+                height:'28rem'
               }}
             >
               <img
@@ -120,7 +122,7 @@ function Body() {
             <Card className='card4'
               style={{
                 width: '20rem',
-                height: "28rem"
+                height: '28rem'
               }}
             >
               <img
