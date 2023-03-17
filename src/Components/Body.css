@@ -1,13 +1,39 @@
 body{
-    
+    height: 250px;
   
 }
-
-.cards{
+.card2{
     border:1px solid ;
     border-Color:red;
     height: 28rem;
-    margin-left: 30px;
+    margin-left: -10px;
+    margin-top: 20px;
+    width: 20rem;
+    margin-right: 30px;
+}
+.card1{
+    border:1px solid ;
+    border-Color:red;
+    height: 28rem;
+    margin-left: -70px;
+    margin-top: 20px;
+    width: 20rem;
+    margin-right: 30px;
+}
+.card3{
+    border:1px solid ;
+    border-Color:red;
+    height: 28rem;
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 20rem;
+    margin-right: 30px;
+}
+.card4{
+    border:1px solid ;
+    border-Color:red;
+    height: 28rem;
+    margin-left: 110px;
     margin-top: 20px;
     width: 20rem;
     margin-right: 30px;

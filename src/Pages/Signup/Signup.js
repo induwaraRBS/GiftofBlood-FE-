@@ -31,7 +31,7 @@ const RegisterPage = () => {
     console.log(formData); // Replace with actual submission logic
   };
 
-  const login = () => {};
+  const Login = () => {};
 
   return (
     <div className="register-page">
