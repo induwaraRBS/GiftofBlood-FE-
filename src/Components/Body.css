@@ -2,6 +2,15 @@ body{
     height: 250px;
   
 }
+.body_Title{
+    margin-left: 150px;
+}
+.body_Title>hr{
+    height: 5px;
+    color: red;
+    width: 95%;
+    margin-top: 5px;
+}
 .card2{
     border:1px solid ;
     border-Color:red;
