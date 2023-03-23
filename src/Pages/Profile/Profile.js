@@ -1,64 +1,163 @@
-import React, { useState } from 'react';
-import { Container, Form, FormGroup, Label, Input, Button, Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import React ,{useState} from 'react';
+import ProfileItems from './ProfileItems';
+import { Nav,NavItem,NavLink,TabContent,TabPane,Row,Col } from 'reactstrap';
+import './Profile.css'
 
-const Profile = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [bloodGroup, setBloodGroup] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+function Profile() {
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // handle form submission logic
+   
+    const[activeTab,setActiveTab] = useState('1');
+
+    const toggleTab = (tab) => {
+      if(activeTab !== tab) setActiveTab(tab);
+    };
+ 
+  const handleProfileInfoClick = () => {
+    toggleTab('1');
   };
 
+  const handleHealthDetailsClick = () => {
+    toggleTab('2');
+  };
+
+  const profilelist = [{
+    "id":1,
+    "name": {
+      "title": "Miss",
+      "first": "Jennie",
+      "last": "Nichols"
+    },
+    "location": {
+      "city": "Billings",
+      },
+      "email": "jennie.nichols@example.com",
+      "blood":"A+",
+      "dob": {
+        "date": "1992-03-08T15:13:16.688Z",
+        "age": 30
+      }
+  },
+  {
+    "id":2,
+    "name": {
+      "title": "Miss",
+      "first": "Maneeshi",
+      "last": "Veemansa"
+    },
+    "location": {
+      "city": "Bandarawela",
+      },
+      "email": "ManeeshiVeemansa@gmail.com",
+      "blood":"O+",
+      "dob": {
+        "date": "1999-055-15T15:13:16.688Z",
+        "age": 23
+      }
+  },
+  {
+    "id":3,
+    "name": {
+      "title": "Miss",
+      "first": "yashoda",
+      "last": "Asirimali"
+    },
+    "location": {
+      "city": "Diyathalawa",
+      },
+      "email": "Yashranathunga@example.com",
+      "blood":"A+",
+      "dob": {
+        "date": "1999-12-09T15:13:16.688Z",
+        "age": 23
+      }
+  }
+];
+ 
+const ProfileListComponent = () => {
+  return profilelist.map((aName) =>{
+    return(
+    <ProfileItems
+    key={aName.id}
+    name={`${aName.name.first} ${aName.name.last}`}
+    city={aName.location.city}
+    email={aName.email}
+    blood={aName.blood}
+    dob={aName.dob.date} 
+    />
+   );
+  });
+}
+
   return (
-    <div>
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">GIFT OF BLOOD</NavbarBrand>
-        <Nav className="ml-auto" navbar>
+    <div className='profile_page'>
+      <h2>Profile</h2>
+      <hr/>
+      <div className=' profile_box'>
+            <Nav tabs>
           <NavItem>
-            <NavLink href="/">Home</NavLink>
+            <NavLink
+              className={activeTab === '1' ? 'active' : ''}
+              onClick={handleProfileInfoClick}
+             
+            >
+             Profile Information
+            </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/profile">Profile</NavLink>
+            <NavLink
+              className={activeTab === '2' ? 'active' : ''}
+              onClick={handleHealthDetailsClick}
+            >
+              Health Details
+            </NavLink>
           </NavItem>
         </Nav>
-      </Navbar>
-      <Container className="mt-4">
-        <h1>Profile Page</h1>
-        <Form onSubmit={handleSubmit}>
-          <FormGroup>
-            <Label for="name">Name</Label>
-            <Input type="text" name="name" id="name" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="email">Email</Label>
-            <Input type="email" name="email" id="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          </FormGroup>
-          <FormGroup>
-            <Label for="bloodGroup">Blood Group</Label>
-            <Input type="select" name="bloodGroup" id="bloodGroup" value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)}>
-              <option value="">Select a blood group</option>
-              <option value="A+">A+</option>
-              <option value="A-">A-</option>
-              <option value="B+">B+</option>
-              <option value="B-">B-</option>
-              <option value="O+">O+</option>
-              <option value="O-">O-</option>
-              <option value="AB+">AB+</option>
-              <option value="AB-">AB-</option>
-            </Input>
-          </FormGroup>
-          <FormGroup>
-            <Label for="phoneNumber">Phone Number</Label>
-            <Input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Enter your phone number" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
-          </FormGroup>
-          <Button color="primary">Save</Button>
-        </Form>
-      </Container>
-    </div>
-  );
-};
+        <TabContent activeTab={activeTab}>
+    <TabPane tabId="1">
+      <Row>
+        <Col sm="12">
+        <hr/>
+          <h4>
+            Tab 1 Contents
+          </h4>
+          <ul>
+            {ProfileListComponent()}
+              
+            </ul>
+        </Col>
+      </Row>
+    </TabPane>
 
-export default Profile;
+    <TabPane tabId="2">
+      <Row>
+        <Col sm="12">
+        <hr/>
+          <h4>
+            Tab 2 Contents
+          </h4>
+          <ul>
+              {/* <ProfileItems name={`${profilelist.name.first} ${profilelist.name.last}`}
+              city={profilelist.location.city}
+              email={profilelist.email}
+              blood={profilelist.blood}
+              dob={profilelist.dob.date} 
+              /> */}
+             
+            </ul>
+        </Col>
+      </Row>
+    </TabPane>
+    </TabContent>
+
+
+
+
+          
+          
+      </div>
+        
+    </div>
+  )
+}
+
+export default Profile

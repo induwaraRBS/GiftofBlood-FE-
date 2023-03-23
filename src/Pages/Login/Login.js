@@ -2,8 +2,12 @@ import React,{useState} from 'react'
 import "./Login.css";
 import LoginIcon from '@mui/icons-material/Login';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import {useNavigate} from 'react-router-dom'
 
-const Login = () => {
+function Login ()  {
+
+  const navigate = useNavigate();
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,7 +16,9 @@ const Login = () => {
     // Add your login logic here
   };
 
-const register = () => {};
+const register = () => {
+    navigate("/signup")
+};
        
        return (
        

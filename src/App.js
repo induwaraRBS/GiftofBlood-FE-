@@ -9,21 +9,27 @@ import Signup from './Pages/Signup/Signup';
 import News from './Pages/News/News';
 import Contact from './Pages/Contact/Contact';
 import Profile from './Pages/Profile/Profile';
+import Footer from './Components/Footer';
 
 function App() {
   return (
-        <Router>
-          <Header/>
-          <Routes>
-            <Route path='/about' element={<About/>}/>
-            <Route path='/login' element={<LoginJs />}/>
-            <Route path='/signup' element={<Signup/>}/>
-            <Route path ='/news' element={<News/>}/>
-            <Route path='/contact' element={<Contact/>}/>
-            <Route path ='/profile' element={<Profile/>}/>
-            <Route exact path="/" element={<Home />} />
-          </Routes>
-        </Router>
+    <><div className='page-container'>
+      <div className='content-wrap'>
+      <Router>
+      <Header />
+      <Routes>
+        <Route path='/about' element={<About />} />
+        <Route path='/login' element={<LoginJs />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/news' element={<News />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route exact path="/" element={<Home />} />
+      </Routes>
+      <Footer />
+    </Router>
+    </div>
+      </div></>
   );
 }
 

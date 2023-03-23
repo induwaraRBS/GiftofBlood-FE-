@@ -1,8 +1,44 @@
-import React from 'react'
+import React ,{useState} from 'react';
+import {Container,Row,Col,Form,FormGroup,Label,Input,Button} from 'reactstrap';
+import "./Contact.css"
+
 
 function Contact() {
+  const[name,setName]=useState('');
+  const[email,setEmail]=useState('');
+  const[message,setMessage]=useState('');
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+    // Add code to send form data to server or handle form submission here
+  };
+
   return (
-    <div>Contact</div>
+    <div >
+        <Container>
+      <Row>
+        <Col>
+          <h1>Contact Us</h1>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Label for="name">Name:</Label>
+              <Input type="text" id="name" name="name" required value={name} onChange={(e) => setName(e.target.value)} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="email">Email:</Label>
+              <Input type="email" id="email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="message">Message:</Label>
+              <Input type="textarea" id="message" name="message" required value={message} onChange={(e) => setMessage(e.target.value)} />
+            </FormGroup>
+            <Button type="submit" color="danger">Submit</Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+    </div>
   )
 }
 

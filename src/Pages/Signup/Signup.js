@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Signup.css";
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 import { FormGroup, Label, Input, Button } from 'reactstrap';
-import Login from '../Login/Login';
+import login from '../Login/Login';
 
+function RegisterPage  ()  {
 
-const RegisterPage = () => {
+  const navigate = useNavigate();  
+    
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -14,7 +17,8 @@ const RegisterPage = () => {
     nicNumber: '',
     dateOfBirth: '',
     email:'',
-    password:''
+    password:'',
+    location:''
   });
 
   const handleChange = e => {
@@ -31,12 +35,14 @@ const RegisterPage = () => {
     console.log(formData); // Replace with actual submission logic
   };
 
-  const Login = () => {};
+  const Login = () => {   
+    navigate("/login")
+  };
 
   return (
     <div className="register-page">
       <div className="register-box">
-        <h2>Create Your Account</h2>< AccountCircleSharpIcon />
+        <h2>Create Your Account</h2>< AccountCircleSharpIcon className="my-icon" />
        
         <form onSubmit={handleSubmit}>
           <h5>Profile Information</h5>
@@ -84,6 +90,17 @@ const RegisterPage = () => {
               onChange={handleChange}
             />
           </FormGroup>
+          <FormGroup>
+            <Label for="location">City</Label>
+            <Input 
+            type='text'
+            name='locatedcity'
+            id='city'
+            value={formData.location}
+            onChange={handleChange}
+            placeholder="Enter the living city"/>
+          </FormGroup>
+
 
           <h5>Blood Information</h5>
 
@@ -153,4 +170,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default (RegisterPage);
