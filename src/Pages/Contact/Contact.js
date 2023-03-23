@@ -7,10 +7,11 @@ function Contact() {
   const[name,setName]=useState('');
   const[email,setEmail]=useState('');
   const[message,setMessage]=useState('');
+  const[contact,setContact]=useState('');
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
+    console.log(`Name: ${name}, Email: ${email}, Message: ${message},Contact:${contact}`);
     // Add code to send form data to server or handle form submission here
   };
 
@@ -28,6 +29,10 @@ function Contact() {
             <FormGroup>
               <Label for="email">Email:</Label>
               <Input type="email" id="email" name="email" required value={email} onChange={(e) => setEmail(e.target.value)} />
+            </FormGroup>
+            <FormGroup>
+              <Label for="contact">Contact:</Label>
+              <Input type="text" id="contact" name="contact" required value={contact} onChange={(e) => setContact(e.target.value)} />
             </FormGroup>
             <FormGroup>
               <Label for="message">Message:</Label>
