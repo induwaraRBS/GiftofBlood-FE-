@@ -3,17 +3,31 @@ import "./Login.css";
 import LoginIcon from '@mui/icons-material/Login';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import {useNavigate} from 'react-router-dom'
+import { UserAuth } from '../../Server/context/Authcontext';
+
+
 
 function Login ()  {
+
+  const {signIn} = UserAuth();
 
   const navigate = useNavigate();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error,setError] = useState('');
 
-  const handleSubmit = (event) => {
-    // event.preventDefault();
-    // Add your login logic here
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    setError('')
+    try{
+      await signIn(email,password)
+      navigate('/profile')
+      alert("Successfully login");
+    }catch (e){
+      setError(e.message)
+      console.log(e.message)
+    }
   };
 
 const register = () => {
