@@ -15,7 +15,7 @@ function Login ()  {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error,setError] = useState('');
+  const [error,setError] = useState(false);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -25,8 +25,9 @@ function Login ()  {
       navigate('/profile')
       alert("Successfully login");
     }catch (e){
-      setError(e.message)
+      setError(true)
       console.log(e.message)
+      
     }
   };
 
@@ -63,8 +64,11 @@ const register = () => {
                      onChange={(e) => setPassword(e.target.value)} />
                  </FormGroup>
                  <Button color="danger">Login</Button>
-                 <Label>Don't have an </Label>
-                 <span className='signup' onClick={register}> Account?</span>
+                 {error && <span>Wrong Email or Password!</span>}
+                  <div className='Account'>
+                 <Label className='label1'>Don't have an </Label>
+               <Label className='signup' onClick={register}> Account?</Label>
+                 </div>
                </Form>
              </div>
            </div>
