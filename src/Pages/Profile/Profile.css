@@ -4,12 +4,17 @@
     justify-content: center;
 
 }
+
+h2{
+ margin-left: 100px;  
+}
 .profile_box > hr{
     width: 50%;
 }
 .profile_box{
     margin-top: 10px;
-    margin-left: 300px;
+    margin-left: 200px;
+    margin-bottom: 5px;
     width: 700px;
     padding: 30px;
     border: 8px;
@@ -19,4 +24,13 @@
 }
 .nav-link :hover{
     color: red;
+}
+
+.profile_settings{
+    margin-top: 60px;
+}
+
+.Settings_card{
+    margin-top: 20px;
+    margin-left: 5px;
 }

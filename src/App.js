@@ -10,13 +10,18 @@ import News from './Pages/News/News';
 import Contact from './Pages/Contact/Contact';
 import Profile from './Pages/Profile/Profile';
 import Footer from './Components/Footer';
+import { AuthContextProvider } from './Server/context/Authcontext';
+
 
 function App() {
   return (
     <><div className='page-container'>
       <div className='content-wrap'>
-      <Router>
+       
+       
+      
       <Header />
+     <AuthContextProvider>   
       <Routes>
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<LoginJs />} />
@@ -26,8 +31,9 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route exact path="/" element={<Home />} />
       </Routes>
+      </AuthContextProvider>
       <Footer />
-    </Router>
+    
     </div>
       </div></>
   );

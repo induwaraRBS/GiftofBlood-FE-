@@ -1,11 +1,29 @@
 import React ,{useState} from 'react';
 import ProfileItems from './ProfileItems';
-import { Nav,NavItem,NavLink,TabContent,TabPane,Row,Col } from 'reactstrap';
+import { Nav,NavItem,NavLink,TabContent,TabPane,Row,Col, Card ,Button} from 'reactstrap';
 import './Profile.css'
+import { UserAuth } from '../../Server/context/Authcontext';
+import { useNavigate } from 'react-router-dom';
+
 
 function Profile() {
+    
+    const navigate = useNavigate();
 
-   
+    const {logout} = UserAuth();
+    // const user = UserAuth();
+
+    const handleLogout = async () => {
+      try{
+          await logout()
+          navigate('/login');
+          console.log('You are logged out')
+          alert("Are You sure You want to Log out")
+      }catch (e) {
+        console.log(e.message)
+      }
+    };
+    
     const[activeTab,setActiveTab] = useState('1');
 
     const toggleTab = (tab) => {
@@ -91,6 +109,13 @@ const ProfileListComponent = () => {
   return (
     <div className='profile_page'>
       <h2>Profile</h2>
+      <div className='profile_settings'>
+        <Row>
+          <Col>
+           <Button onClick={handleLogout} color='danger'>LogOut</Button>
+          </Col>
+        </Row>
+      </div>
       <hr/>
       <div className=' profile_box'>
             <Nav tabs>

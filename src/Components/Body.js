@@ -2,7 +2,7 @@ import { height } from '@mui/system';
 import React from 'react';
 import { Card,CardBody,CardTitle,CardSubtitle,CardText,Row,Col, Container} from 'reactstrap';
 import { Button } from 'reactstrap';
-//  import 'bootstrap/dist/css/bootstrap.min.css';
+
 import './Body.css';
 
 const News = () => {};
