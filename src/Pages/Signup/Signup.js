@@ -3,42 +3,72 @@ import { useNavigate } from 'react-router-dom';
 import "./Signup.css";
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 import { FormGroup, Label, Input, Button } from 'reactstrap';
-import login from '../Login/Login';
-import { UserAuth } from '../../Server/context/Authcontext';
-
-
-
+import { addDoc, collection, doc, serverTimestamp, setDoc } from "firebase/firestore"; 
+import { auth,db } from '../../Server/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import validator from 'validator';
 
 
 function RegisterPage  ()  {
 
   const navigate = useNavigate();  
 
-  const {createUser} = UserAuth()
+  const[data,setData] = useState({ 
+  firstName: '',
+  lastName: '',
+  bloodGroup: '',
+  contact: '',
+  nicNumber: '',
+  dateOfBirth: '',
+  email:'',
+  password:'',
+  location:'',
+});
+
     
-  const [firstName, setFname] = useState('')
-  const [lastName, setLname] = useState('') 
-  const [bloodGroup, setBloodgroup] = useState('') 
-  const [contact, setContact] = useState('')  
-  const [nicNumber, setnicNumber] = useState('') 
-  const [dateOfBirth, setDateofBirth] = useState('') 
-  const [email, setEmail] = useState('') 
-  const [password, setPassword] = useState('') 
-  const [location,setLocation] = useState('') 
+  // const [firstName, setFname] = useState('')
+  // const [lastName, setLname] = useState('') 
+  // const [bloodGroup, setBloodgroup] = useState('') 
+  // const [contact, setContact] = useState('')  
+  // const [nicNumber, setnicNumber] = useState('') 
+  // const [dateOfBirth, setDateofBirth] = useState('') 
+  // const [email, setEmail] = useState('') 
+  // const [password, setPassword] = useState('') 
+  // const [location,setLocation] = useState('') 
   const [error,setError] =useState('')
 
 
+  const handleInput = (e) =>{
+    const id = e.target.id;
+    const value = e.target.value;
+
+    setData(prevData => ({...prevData,[id]:value}));
+  }
+
+  console.log(data);
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError('')
     try{
-      await createUser(email,password)
-      navigate('/profile')
-      alert("Regoistered Successfully")
-    }catch (e){
-      setError(e.message)
-      console.log(e.message)
+       
+      const res =await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+
+      console.log("done")
+      console.log(res.user);
+
+     await setDoc(doc(db, "users",res.user.uid), {
+       ...data, 
+        timeStamp:serverTimestamp() 
+      });
+    }catch(error){
+
+      console.log(error);
     }
+    
    }
 
   //navigate through the button
@@ -59,8 +89,8 @@ function RegisterPage  ()  {
               type="text"
               name="firstName"
               id="firstName"
-              value={firstName}
-              onChange={(e) => setFname(e.target.value)}
+              value={data.firstName}
+              onChange={handleInput}
               placeholder="Enter your first name"
             />
           </FormGroup>
@@ -70,9 +100,9 @@ function RegisterPage  ()  {
               type="text"
               name="lastName"
               id="lastName"
-              value={lastName}
-              onChange={(e) => setLname(e.target.value)}
-              placeholder="Enter your last name"
+              value={data.lastName}
+              onChange={handleInput}
+              placeholder="Enter Your Last Name"
             />
           </FormGroup>
 
@@ -82,9 +112,9 @@ function RegisterPage  ()  {
               type="tel"
               name="contact"
               id="contact"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
-              placeholder="Enter your contact number"
+              value={data.contact}
+              onChange={handleInput}  
+             placeholder="Enter your contact number"
             />
           </FormGroup>
           <FormGroup>
@@ -93,8 +123,8 @@ function RegisterPage  ()  {
               type="date"
               name="dateOfBirth"
               id="dateOfBirth"
-              value={dateOfBirth}
-              onChange={(e) => setDateofBirth(e.target.value)}
+              value={data.dateOfBirth}
+              onChange={handleInput}
             />
           </FormGroup>
           <FormGroup>
@@ -103,8 +133,8 @@ function RegisterPage  ()  {
             type='text'
             name='locatedcity'
             id='city'
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            value={data.location}
+            onChange={handleInput}
             placeholder="Enter the living city"/>
           </FormGroup>
 
@@ -117,8 +147,8 @@ function RegisterPage  ()  {
               type="select"
               name="bloodGroup"
               id="bloodGroup"
-              value={bloodGroup}
-              onChange={(e) => setBloodgroup(e.target.value)}
+              value={data.bloodGroup}
+              onChange={handleInput}
             >
               <option value="">-- Select your blood group --</option>
               <option value="A+">A+</option>
@@ -132,7 +162,7 @@ function RegisterPage  ()  {
             </Input>
           </FormGroup>
 
-          <h5>Account Verfications</h5>
+          <h5>Account Verifications</h5>
           <FormGroup>
             <Label for="email">Email</Label>
             <Input 
@@ -140,9 +170,8 @@ function RegisterPage  ()  {
               name='email'
               id='email'
               placeholder='Enter your email'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+              value={data.email}
+              onChange={handleInput}          />
           </FormGroup>
           
           <FormGroup>
@@ -151,8 +180,8 @@ function RegisterPage  ()  {
               type="text"
               name="nicNumber"
               id="nicNumber"
-              value={nicNumber}
-              onChange={(e) => setnicNumber(e.target.value)}
+              value={data.nicNumber}
+              onChange={handleInput}
               placeholder="Enter your NIC number"
             />
           </FormGroup>
@@ -163,8 +192,9 @@ function RegisterPage  ()  {
             name='password'
             id="password"
             placeholder='Enter a password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}/>
+            value={data.password}
+            onChange={handleInput}
+            />
           </FormGroup>
           
          

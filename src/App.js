@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import LoginJs from './Pages/Login/Login';  
@@ -10,10 +10,17 @@ import News from './Pages/News/News';
 import Contact from './Pages/Contact/Contact';
 import Profile from './Pages/Profile/Profile';
 import Footer from './Components/Footer';
-import { AuthContextProvider } from './Server/context/Authcontext';
+
+import Protectedroute from './Server/security/Protectedroute';
+import { Authcontext } from './Server/context/Authcontext';
 
 
 function App() {
+
+   
+    
+    const {currentUser} = useContext(Authcontext)
+    
   return (
     <><div className='page-container'>
       <div className='content-wrap'>
@@ -21,17 +28,17 @@ function App() {
        
       
       <Header />
-     <AuthContextProvider>   
+    
       <Routes>
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<LoginJs />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/news' element={<News />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/profile' element={<Profile />} />
+        <Route path='/contact' element={ <Protectedroute> <Contact /> </Protectedroute> } />
+        <Route path='/profile' element={ <Protectedroute> <Profile /> </Protectedroute> } />
         <Route exact path="/" element={<Home />} />
       </Routes>
-      </AuthContextProvider>
+   
       <Footer />
     
     </div>

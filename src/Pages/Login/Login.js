@@ -1,34 +1,41 @@
-import React,{useState} from 'react'
+import React,{useContext, useState} from 'react'
 import "./Login.css";
 import LoginIcon from '@mui/icons-material/Login';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import {useNavigate} from 'react-router-dom'
-import { UserAuth } from '../../Server/context/Authcontext';
-
+import {signInWithEmailAndPassword} from 'firebase/auth'
+import { auth } from '../../Server/firebase';
+import { Authcontext } from '../../Server/context/Authcontext';
 
 
 function Login ()  {
 
-  const {signIn} = UserAuth();
-
+  
   const navigate = useNavigate();
   
+  const {dispatch} = useContext(Authcontext)
+
+
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error,setError] = useState(false);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError('')
-    try{
-      await signIn(email,password)
-      navigate('/profile')
-      alert("Successfully login");
-    }catch (e){
-      setError(true)
-      console.log(e.message)
-      
-    }
+    
+    signInWithEmailAndPassword(auth,email,password)
+    .then ((userCredential) => {
+
+      const user = userCredential.user;
+      dispatch({type:"LOGIN",payload:user})
+      console.log(user)
+      navigate('/profile');
+      alert("Login")
+    })
+    .catch((error) => {
+     setError(true);
+    })
   };
 
 const register = () => {

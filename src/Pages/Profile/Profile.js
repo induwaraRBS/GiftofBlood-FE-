@@ -10,18 +10,11 @@ function Profile() {
     
     const navigate = useNavigate();
 
-    const {logout} = UserAuth();
+
     // const user = UserAuth();
 
     const handleLogout = async () => {
-      try{
-          await logout()
-          navigate('/login');
-          console.log('You are logged out')
-          alert("Are You sure You want to Log out")
-      }catch (e) {
-        console.log(e.message)
-      }
+    
     };
     
     const[activeTab,setActiveTab] = useState('1');
