@@ -131,8 +131,8 @@ function RegisterPage  ()  {
             <Label for="location">City</Label>
             <Input 
             type='text'
-            name='locatedcity'
-            id='city'
+            name='location'
+            id='location'
             value={data.location}
             onChange={handleInput}
             placeholder="Enter the living city"/>
@@ -200,7 +200,7 @@ function RegisterPage  ()  {
          
           <Button color="danger" block>Sign Up</Button>
           <Label>Already Have an</Label>
-          <span className='login_register' onClick={Login}> Account?</span>
+          <Label className='login' onClick={Login}> Account?</Label>
         </form>
       </div>
     </div>

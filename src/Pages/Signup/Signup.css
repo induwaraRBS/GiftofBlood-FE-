@@ -87,3 +87,10 @@
     color:black;
     margin-left: 150px;
   }
+  .login{
+    color: red;
+    cursor: pointer;
+    margin-left: 130px;
+    display: flex;
+    margin-top: -29px;
+  }
