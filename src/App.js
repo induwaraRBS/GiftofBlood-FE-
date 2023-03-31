@@ -10,9 +10,9 @@ import News from './Pages/News/News';
 import Contact from './Pages/Contact/Contact';
 import Profile from './Pages/Profile/Profile';
 import Footer from './Components/Footer';
-
 import Protectedroute from './Server/security/Protectedroute';
 import { Authcontext } from './Server/context/Authcontext';
+
 
 
 function App() {

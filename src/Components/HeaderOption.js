@@ -1,6 +1,8 @@
 import React from 'react'
 import './HeaderOption.css';
 
+
+
 function HeaderOption() {
   return (
     <nav className='navbar'>
@@ -25,9 +27,15 @@ function HeaderOption() {
           </li>
         </ul>
         <ul>
-          <li >
-            <a classname="nav-link" href='/login'>Login</a>
-          </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Login
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/login">Donor</a></li>
+            <li><a class="dropdown-item" href="#">Admin</a></li>
+          </ul>
+        </li>
         </ul>
         <ul>
           <li >
