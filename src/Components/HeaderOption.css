@@ -45,6 +45,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     padding: 10px;
+    display: none;
   }
   
   .navbar .nav-item .dropdown-menu a {
@@ -56,6 +57,7 @@
   }
   
   .navbar .nav-item .dropdown-menu a:hover {
+    display: flex;
     background-color: #f7f7f7;
   }
   
