@@ -16,7 +16,7 @@ function Login ()  {
   const {dispatch} = useContext(Authcontext)
 
 
-
+  const [userType, setUserType] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error,setError] = useState(false);
@@ -26,26 +26,47 @@ function Login ()  {
     
     signInWithEmailAndPassword(auth,email,password)
     .then ((userCredential) => {
-
       const user = userCredential.user;
-      dispatch({type:"LOGIN",payload:user})
-      console.log(user)
-      navigate('/profile');
-      alert("Login")
+      getUserTypeFromDatabase(user.email)
+        .then((userType) => {
+          if(userType === 'admin'){
+            dispatch({type:"LOGIN",payload:user});
+            navigate('/admin');
+          }else if(userType === 'Donor'){
+            dispatch({type:"LOGIN",payload:user});
+            navigate('profile');
+          }else{
+            alert('unknown user');
+          }
+        })
+        .catch((error) => {
+          setError(true);
+        });
     })
     .catch((error) => {
-     setError(true);
-    })
+      setError(true);
+    });
   };
 
 const register = () => {
     navigate("/signup")
 };
+
+//newsly added
+
+function getUserTypeFromDatabase(email){
+  return new Promise((resolve, reject) => {
+    // Replace this with your own code to retrieve the user type from the database
+    const userType = 'Donor';
+    if (userType) {
+      resolve(userType);
+    } else {
+      reject(new Error('User type not found'));
+    }
+  });
+}
        
        return (
-       
-       
-
          <div className="login-page">
              <div className="login-box">
                <h2>Sign in </h2><LoginIcon></LoginIcon>

@@ -12,8 +12,11 @@ import Profile from './Pages/Profile/Profile';
 import Footer from './Components/Footer';
 import Protectedroute from './Server/security/Protectedroute';
 import { Authcontext } from './Server/context/Authcontext';
-
-
+import Admin from './Pages/Admin/Admin';
+import Donortable from './Components/Tables/Donortable';
+import Messagetable from './Components/Tables/Messagetable';
+import Admintable from './Components/Tables/Admintable';
+import Newstable from './Components/Tables/Newstable';
 
 function App() {
 
@@ -36,6 +39,13 @@ function App() {
         <Route path='/news' element={<News />} />
         <Route path='/contact' element={ <Protectedroute> <Contact /> </Protectedroute> } />
         <Route path='/profile' element={ <Protectedroute> <Profile /> </Protectedroute> } />
+        <Route path='/admin' element={ <Protectedroute> <Admin /> </Protectedroute> } />
+        {/* Components routing */}
+        <Route path='/donor' element={<Donortable/>}/>
+        <Route path='/message' element={<Messagetable/>}/>
+        <Route path='/admintable' element={<Admintable/>}/>
+        <Route path='/news' element={<Newstable/>}/>
+        {/* Done */}
         <Route exact path="/" element={<Home />} />
       </Routes>
    
