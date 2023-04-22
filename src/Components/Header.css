@@ -15,6 +15,7 @@
 }
 .header__left >img{
 
+    border-radius: 25px;
     padding: 10px;
     object-fit: contain;
     height: 50px;

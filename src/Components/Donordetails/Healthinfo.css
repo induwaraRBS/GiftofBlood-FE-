@@ -1,0 +1,8 @@
+.Page{
+    display: flex;
+}
+
+.details{
+    flex:5;
+}
+

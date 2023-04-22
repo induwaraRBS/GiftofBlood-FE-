@@ -16,38 +16,38 @@ const sample = [
   ['Gingerbread', 356, 16.0, 49, 3.9],
 ];
 
-function createData(id, dessert, calories, fat, carbs, protein) {
-  return { id, dessert, calories, fat, carbs, protein };
+function createData(id,news, date, image, status) {
+  return { id, news,date,image, status };
 }
 
 const columns = [
   {
-    width: 200,
-    label: 'News',
-    dataKey: 'dessert',
+    width: 120,
+    label: 'News-ID',
+    dataKey: 'id',
   },
   {
-    width: 120,
-    label: 'News-id',
-    dataKey: 'id',
+    width: 200,
+    label: 'News',
+    dataKey: 'news',
     numeric: true,
   },
   {
     width: 120,
     label: 'Date',
-    dataKey: 'fat',
+    dataKey: 'date',
     numeric: true,
   },
   {
     width: 120,
-    label: 'Carbs\u00A0(g)',
-    dataKey: 'carbs',
+    label: 'Image',
+    dataKey: 'image',
     numeric: true,
   },
   {
     width: 120,
-    label: 'Protein\u00A0(g)',
-    dataKey: 'protein',
+    label: 'Status',
+    dataKey: 'status',
     numeric: true,
   },
 ];

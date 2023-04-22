@@ -9,7 +9,7 @@ function Header() {
     <div className='header'>
 
         <div className='header__left'>
-            <img src='https://previews.123rf.com/images/yupiramos/yupiramos1607/yupiramos160701221/59263338-blood-drop-icon-blood-donation-and-transfusion-theme-design-vector-illustration-.jpg'
+            <img src='https://static.vecteezy.com/system/resources/previews/007/063/118/original/blood-drop-isolated-on-white-background-free-vector.jpg'
             alt='LOGO'/>
             <div className='header__text'>
               <h4>GIFT OF BLOOD</h4>

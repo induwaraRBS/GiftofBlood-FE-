@@ -5,7 +5,7 @@
 .table{
   padding-left:5px ;
   padding-top: 10px;
-  flex: 6;
+  flex: 7;
 }
 
 .Filter{
@@ -14,4 +14,7 @@
 }
 .filter{
   font-size: 28px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30px;
 }

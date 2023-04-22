@@ -14,7 +14,7 @@ function Admin() {
         <div className='homeContainer'>
    
           <div className='Widgets'>
-            <Widgets type="Donors"/>
+            <Widgets type="Donor"/>
             <Widgets type="Admins"/>
             <Widgets type="Messages"/>
           </div>

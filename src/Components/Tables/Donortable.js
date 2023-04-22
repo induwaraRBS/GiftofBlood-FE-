@@ -1,42 +1,77 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import SideMenu from '../SideMenu';
+import'./Donortable.css';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { collection, getDocs, where,query, deleteDoc, doc } from "firebase/firestore";
+import {db} from '../../Server/firebase'; 
+
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
+  { field: 'id', headerName: 'ID', width: 100 },
+  { field: 'firstName', headerName: 'First name', width: 120 },
+  { field: 'lastName', headerName: 'Last name', width: 120 },
+  { field: 'location', headerName: 'Location', width: 110 },
+  { field: 'bloodGroup', headerName: 'Blood-Group', width: 95 },
   {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
+    field: 'height',
+    headerName: 'Height',
     width: 90,
+   
   },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
-];
+  { field: 'weight', headerName: 'Weight', width: 90 },
+  { field: 'contact', headerName: 'Contact', width: 120 },
+  { field: 'nicNumber', headerName: 'NIC', width: 120 },
+  { field: 'dateOfBirth', headerName: 'DOB', width: 100 },
+  { field: 'Action', headerName: 'Action', width: 170,
+  renderCell: (params) => {
+    const handleDelete = async (rows, setRows) => {
+      try {
+        await deleteDoc(doc(db, "users", params.id));
+        const updatedRows = rows.filter((row) => row.id !== params.id);
+        setRows(updatedRows);
+        alert("deleted one row");
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+
+          return (
+      
+            <button className='deleteButton' onClick={() => handleDelete(params.rows, params.api.setRows)}>Delete<DeleteIcon className='icons'/></button>
+
+          )
+        }
+      },
 ];
 
 
 function Donortable() {
+
+  const[rows,setRows]=useState([]);
+
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      
+      try{
+        const querySnapshot = await getDocs(query(collection(db, "users"), where("usertype", "==", "Donor")));
+        setRows(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})));
+ 
+  }catch(err){
+        console.log(err)
+  }
+
+    };
+    fetchData()
+  },[]);
+
+  console.log(rows);
+
+
 
   return (
     <div  className='Page'>
@@ -46,7 +81,7 @@ function Donortable() {
           <h3>Donor Table</h3>
           <hr></hr>
         </div>
-        <div style={{ height: 400, width: '100%' }}>
+        <div style={{ height: 500, width: '100%' }}>
       <DataGrid
         rows={rows}
         columns={columns}

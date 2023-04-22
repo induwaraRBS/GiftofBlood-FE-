@@ -1,11 +1,11 @@
-import React,{useContext, useState} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import "./Login.css";
 import LoginIcon from '@mui/icons-material/Login';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import {useNavigate} from 'react-router-dom'
-import {signInWithEmailAndPassword} from 'firebase/auth'
-import { auth } from '../../Server/firebase';
-import { Authcontext } from '../../Server/context/Authcontext';
+import {useNavigate} from 'react-router-dom';
+import app, { auth, db } from '../../Server/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { collection, doc, getDoc } from 'firebase/firestore';
 
 
 function Login ()  {
@@ -13,58 +13,48 @@ function Login ()  {
   
   const navigate = useNavigate();
   
-  const {dispatch} = useContext(Authcontext)
-
-
-  const [userType, setUserType] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error,setError] = useState(false);
 
-  const handleSubmit = (e) => {
+  //********************************************** */
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    
-    signInWithEmailAndPassword(auth,email,password)
-    .then ((userCredential) => {
-      const user = userCredential.user;
-      getUserTypeFromDatabase(user.email)
-        .then((userType) => {
-          if(userType === 'admin'){
-            dispatch({type:"LOGIN",payload:user});
-            navigate('/admin');
-          }else if(userType === 'Donor'){
-            dispatch({type:"LOGIN",payload:user});
-            navigate('profile');
-          }else{
-            alert('unknown user');
-          }
-        })
-        .catch((error) => {
-          setError(true);
-        });
-    })
-    .catch((error) => {
+    try{
+
+      const userCredential=await signInWithEmailAndPassword(auth,email, password);
+     
+      const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
+      if (userDoc.exists()) {
+        const userType = userDoc.data().usertype;
+
+        if (userType === "Admin") {
+          console.log("admin");
+          alert("admin done");
+          navigate("/admin");
+        } else if (userType === "Donor") {
+          console.log("donor");
+          alert("donor done");
+          navigate("/profile");
+        } else {
+          alert("User not found 404");
+        }
+      }
+    } catch (error) {
       setError(true);
-    });
+      console.log(error);
+    }
+    
+    
+
   };
 
 const register = () => {
     navigate("/signup")
 };
 
-//newsly added
 
-function getUserTypeFromDatabase(email){
-  return new Promise((resolve, reject) => {
-    // Replace this with your own code to retrieve the user type from the database
-    const userType = 'Donor';
-    if (userType) {
-      resolve(userType);
-    } else {
-      reject(new Error('User type not found'));
-    }
-  });
-}
+
        
        return (
          <div className="login-page">
@@ -101,7 +91,7 @@ function getUserTypeFromDatabase(email){
              </div>
            </div>
   );
-};
+       };
 
 export default Login;       
      

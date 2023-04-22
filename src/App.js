@@ -17,6 +17,8 @@ import Donortable from './Components/Tables/Donortable';
 import Messagetable from './Components/Tables/Messagetable';
 import Admintable from './Components/Tables/Admintable';
 import Newstable from './Components/Tables/Newstable';
+import Healthinfo from './Components/Donordetails/Healthinfo';
+import Accountinfo from './Components/Donordetails/Accountinfo';
 
 function App() {
 
@@ -45,6 +47,8 @@ function App() {
         <Route path='/message' element={<Messagetable/>}/>
         <Route path='/admintable' element={<Admintable/>}/>
         <Route path='/news' element={<Newstable/>}/>
+        <Route path='/accountinfo' element={<Accountinfo/>}/>
+        <Route path='/healthinfo' element={<Healthinfo/>}/>
         {/* Done */}
         <Route exact path="/" element={<Home />} />
       </Routes>

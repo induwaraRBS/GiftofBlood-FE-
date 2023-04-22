@@ -1,9 +1,8 @@
 import React from 'react'
-import "./SideMenu.css"
-import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import "./Donormenu.css"
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import PeopleIcon from '@mui/icons-material/People';
-import SettingsIcon from '@mui/icons-material/Settings';
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import LogoutIcon from '@mui/icons-material/Logout';
 import EmailIcon from '@mui/icons-material/Email';
 import { Link } from 'react-router-dom';
@@ -13,28 +12,22 @@ function SideMenu() {
   return (
     <div className='center'>
       <ul>
-        <Link to='/admin'style={{textDecoration:"none"}} className='link' >
+        <Link to='/Profile'style={{textDecoration:"none"}} className='link' >
         <li>
           <DashboardIcon className='icon'/>
-          <span>Dashboard</span>
+          <span>Profile</span>
         </li>
         </Link>
-        <Link to='/admintable' style={{textDecoration:"none"}} className='link'>
+        <Link to='/healthinfo' style={{textDecoration:"none"}} className='link'>
         <li>
-        <AdminPanelSettingsIcon className='icon'/>
-          <span>Admin-Panel</span>
+        <HealthAndSafetyIcon className='icon'/>
+          <span>Health Infromations</span>
         </li>
         </Link>
-        <Link to="/donor" style={{textDecoration:"none"}} className='link'>
+        <Link to="/accountinfo" style={{textDecoration:"none"}} className='link'>
         <li>
-          <PeopleIcon className='icon'/>
-          <span>Donors</span>
-        </li>
-        </Link>
-        <Link to="/" style={{textDecoration:"none"}} className='link'>
-        <li>
-          <SettingsIcon className='icon'/>
-          <span>Settings</span>
+          <AccountCircleIcon className='icon'/>
+          <span>Account Informations</span>
         </li>
         </Link>
         <Link to="/message" style={{textDecoration:"none"}} className='link'>

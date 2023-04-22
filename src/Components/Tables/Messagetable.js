@@ -9,6 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import SideMenu from '../SideMenu';
 import EmailIcon from '@mui/icons-material/Email';
+import './Messagetable.css';
 
 const columns = [
   { id: 'date', label: 'Date', minWidth: 100 },
