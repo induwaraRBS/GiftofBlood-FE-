@@ -1,11 +1,11 @@
-import React,{useContext, useState} from 'react'
+import React,{useContext, useEffect, useState} from 'react'
 import "./Login.css";
 import LoginIcon from '@mui/icons-material/Login';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import {useNavigate} from 'react-router-dom'
-import {signInWithEmailAndPassword} from 'firebase/auth'
-import { auth } from '../../Server/firebase';
-import { Authcontext } from '../../Server/context/Authcontext';
+import {useNavigate} from 'react-router-dom';
+import app, { auth, db } from '../../Server/firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { collection, doc, getDoc } from 'firebase/firestore';
 
 
 function Login ()  {
@@ -13,39 +13,50 @@ function Login ()  {
   
   const navigate = useNavigate();
   
-  const {dispatch} = useContext(Authcontext)
-
-
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error,setError] = useState(false);
 
-  const handleSubmit = (e) => {
+  //********************************************** */
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    
-    signInWithEmailAndPassword(auth,email,password)
-    .then ((userCredential) => {
+    try{
 
-      const user = userCredential.user;
-      dispatch({type:"LOGIN",payload:user})
-      console.log(user)
-      navigate('/profile');
-      alert("Login")
-    })
-    .catch((error) => {
-     setError(true);
-    })
+      const userCredential=await signInWithEmailAndPassword(auth,email, password);
+     
+      const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
+      if (userDoc.exists()) {
+        const userType = userDoc.data().usertype;
+
+        if (userType === "Admin") {
+          console.log("admin");
+          alert("admin done");
+          navigate("/admin");
+        } else if (userType === "Donor") {
+          console.log("donor");
+          alert("donor done");
+          navigate("/profile");
+        } else {
+          alert("User not found 404");
+        }
+      }
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
+    
+    
+
   };
 
 const register = () => {
     navigate("/signup")
 };
+
+
+
        
        return (
-       
-       
-
          <div className="login-page">
              <div className="login-box">
                <h2>Sign in </h2><LoginIcon></LoginIcon>
@@ -80,7 +91,7 @@ const register = () => {
              </div>
            </div>
   );
-};
+       };
 
 export default Login;       
      

@@ -1,0 +1,44 @@
+.Page{
+    display: flex;
+}
+
+.table{
+    padding-left:5px ;
+    padding-top: 10px;
+    flex: 7;
+}
+
+.Filter{
+    display: flex;
+    justify-content: space-between;
+}
+.filter{
+    font-size: 28px;
+}
+
+.cellAction{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.viewButton{
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: darkblue;
+    border:1px dotted rgba(0, 0, 139, 0.595) ;
+}
+
+.deleteButton{
+    padding: 1px 5px;
+    border-radius: 5px;
+    color: red;
+    border:1px dotted red;
+}
+
+.icons{
+    align-items: center;
+    font-size: 15px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+}

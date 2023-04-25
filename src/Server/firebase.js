@@ -22,4 +22,5 @@ export const auth = getAuth(app);
 const analytics = getAnalytics(app);
 export const storage = getStorage(app);
 
-export default app 
+
+export default app;

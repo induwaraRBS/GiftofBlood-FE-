@@ -5,6 +5,7 @@ import './Profile.css'
 import { useNavigate } from 'react-router-dom';
 import {db } from '../../Server/firebase';
 import { addDoc,collection,doc,serverTimestamp,setDoc } from 'firebase/firestore';
+import Donormenu from'../../Components/Donormenu'
 
 function Profile() {
     
@@ -132,14 +133,8 @@ const ProfileListComponent = () => {
 
   return (
     <div className='profile_page'>
-      <h2>Profile</h2>
-      <div className='profile_settings'>
-        <Row>
-          <Col>
-           <Button onClick={handleLogout} color='danger'>LogOut</Button>
-          </Col>
-        </Row>
-      </div>
+      <Donormenu/>
+      
       <hr/>
       <div className=' profile_box'>
             <Nav tabs>
@@ -157,16 +152,7 @@ const ProfileListComponent = () => {
               className={activeTab === '2' ? 'active' : ''}
               onClick={handleHealthDetailsClick}
             >
-              Health Details
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={activeTab === '3' ? 'active' : ''}
-              onClick={handleupdatehealth}
-             
-            >
-             Profile Information
+            Profile Information
             </NavLink>
           </NavItem>
         </Nav>
@@ -206,77 +192,10 @@ const ProfileListComponent = () => {
       </Row>
     </TabPane>
 
-    <TabPane tabId="3">
-      <Row>
-        <Col sm="12">
-        <hr/>
-          <h4>
-            Update Health Information
-          </h4>
-          <Form onSubmit={handleSubmit}>
-          <FormGroup>
-            <Label for="email">Email</Label>
-            <Input 
-              type='email'
-              name='email'
-              id='email'
-              placeholder='Enter your email'
-              value={info.email}
-              onChange={handleInput}          />
-          </FormGroup>
-            <FormGroup>
-              <Label>Weight</Label>
-              <Input
-            type="number"
-            name="weight"
-            id="weight"
-            value={info.weight}
-            onChange={handleInput}
-            placeholder="Enter your weight in kilograms"
-          />
-            </FormGroup>
-            <FormGroup>
-              <Label>Height</Label>
-              <Input
-            type="number"
-            name="weight"
-            id="weight"
-            value={info.Height}
-            onChange={handleInput}
-            placeholder="Enter your height in Centemeters"
-          />
-            </FormGroup>
-            <FormGroup>
-              <Label>Health Updates</Label>
-              <Input
-             type="text"
-             name="Updates"
-             id="Updates"
-             value={info.heartRate}
-             onChange={handleInput}
-             placeholder="Enter your Health Updates"
-             />
-            </FormGroup>
-
-            <FormGroup>
-          <Label for="image">Upload Health files</Label>
-          <Input
-            type="file"
-            name="image"
-            id="image"
-            onChange={handleInput}
-          />
-        </FormGroup>
-        <Button type="submit" color="primary">Submit</Button>
-          </Form>
-        </Col>
-      </Row>
-    </TabPane>       
-
     </TabContent>
 
 
-
+.
 
           
           

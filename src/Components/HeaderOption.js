@@ -21,20 +21,14 @@ function HeaderOption() {
             <a classname="nav-link" href='/contact'>Contact</a>
           </li>
         </ul>
-        <ul>
+        {/* <ul>
           <li>
             <a classname="nav-link" href='/profile'>Profile</a>
           </li>
-        </ul>
+        </ul> */}
         <ul>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Login
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/login">Donor</a></li>
-            <li><a class="dropdown-item" href="#">Admin</a></li>
-          </ul>
+        <li>
+          <a className='nav-link' href='/login'>Login</a>
         </li>
         </ul>
         <ul>
