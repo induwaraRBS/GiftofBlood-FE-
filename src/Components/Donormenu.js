@@ -30,12 +30,12 @@ function SideMenu() {
           <span>Account Informations</span>
         </li>
         </Link>
-        <Link to="/message" style={{textDecoration:"none"}} className='link'>
+        {/* <Link to="/message" style={{textDecoration:"none"}} className='link'>
         <li>
           <EmailIcon className='icon'/>
           <span>Messages</span>
         </li>
-        </Link>
+        </Link> */}
         <Link to="" style={{textDecoration:"none"}} className='link'>
         <li>
           <LogoutIcon className='icon'/>

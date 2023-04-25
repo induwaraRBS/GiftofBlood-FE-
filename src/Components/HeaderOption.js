@@ -21,11 +21,11 @@ function HeaderOption() {
             <a classname="nav-link" href='/contact'>Contact</a>
           </li>
         </ul>
-        <ul>
+        {/* <ul>
           <li>
             <a classname="nav-link" href='/profile'>Profile</a>
           </li>
-        </ul>
+        </ul> */}
         <ul>
         <li>
           <a className='nav-link' href='/login'>Login</a>

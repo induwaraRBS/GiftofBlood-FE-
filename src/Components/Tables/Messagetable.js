@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -10,57 +10,67 @@ import TableRow from '@mui/material/TableRow';
 import SideMenu from '../SideMenu';
 import EmailIcon from '@mui/icons-material/Email';
 import './Messagetable.css';
+import { collection, deleteDoc, doc, getDocs, query } from 'firebase/firestore';
+import { db } from '../../Server/firebase';
+
 
 const columns = [
-  { id: 'date', label: 'Date', minWidth: 100 },
-  { id: 'name', label: 'Name', minWidth: 100 },
+  { id: 'id', label: 'ID', minWidth: 60,align:'center' },
+  { id: 'fullname', label: 'Name', minWidth: 80,align:'center' },
   {
-    id: 'Message',
+    id: 'message',
     label: 'Message',
     minWidth: 200,
-    align: 'right',
+    align: 'center',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'email',
     label: 'Email',
     minWidth: 100,
-    align: 'right',
+    align: 'center',
     format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'contact',
     label: 'Contact',
-    minWidth: 100,
-    align: 'right',
+    minWidth: 50,
+    align: 'center',
     format: (value) => value.toFixed(2),
   },
+  { id: 'Action', label: 'Action', minwidth: 170,
+  renderCell: (params) => {
+    const handleDelete = async (rows, setRows) => {
+      try {
+        await deleteDoc(doc(db, "users", params.id));
+        const updatedRows = rows.filter((row) => row.id !== params.id);
+        setRows(updatedRows);
+        alert("deleted one row");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+
+          return (
+      
+            <button className='deleteButton' onClick={() => handleDelete(params.rows, params.api.setRows)}>Delete</button>
+
+          )
+        }
+      },
 ];
 
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
+// function createData(name, code, population, size) {
+//   const density = population / size;
+//   return { name, code, population, size, density };
+// }
 
-const rows = [
-  createData('India', 'IN', 1324171354, 3287263),
-  createData('China', 'CN', 1403500365, 9596961),
-  createData('Italy', 'IT', 60483973, 301340),
-  createData('United States', 'US', 327167434, 9833520),
-  createData('Canada', 'CA', 37602103, 9984670),
-  createData('Australia', 'AU', 25475400, 7692024),
-  createData('Germany', 'DE', 83019200, 357578),
-  createData('Ireland', 'IE', 4857000, 70273),
-  createData('Mexico', 'MX', 126577691, 1972550),
-  createData('Japan', 'JP', 126317000, 377973),
-  createData('France', 'FR', 67022000, 640679),
-  createData('United Kingdom', 'GB', 67545757, 242495),
-  createData('Russia', 'RU', 146793744, 17098246),
-  createData('Nigeria', 'NG', 200962417, 923768),
-  createData('Brazil', 'BR', 210147125, 8515767),
-];
+const rows = [];
 
-export default function StickyHeadTable() {
+
+export default function MessageTable() {
+  const[rows,setRows]=useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -72,6 +82,25 @@ export default function StickyHeadTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      
+      try{
+        const querySnapshot = await getDocs(query(collection(db, "Messages")));
+        setRows(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})));
+ 
+  }catch(err){
+        console.log(err)
+  }
+
+    };
+    fetchData()
+  },[]);
+
+  console.log(rows);
+
+
 
   return (
   <div className='Page'>

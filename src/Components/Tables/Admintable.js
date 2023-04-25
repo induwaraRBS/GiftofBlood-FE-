@@ -53,6 +53,7 @@ function Admintable() {
       try{
         const querySnapshot = await getDocs(query(collection(db, "users"), where("usertype", "==", "Admin")));
         setRows(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})));
+  
  
   }catch(err){
         console.log(err)
@@ -73,8 +74,7 @@ function Admintable() {
         <div className='Filter'>
           <h3>Admin Table</h3>
           <div>
-          <Link>
-          
+          <Link to={'/adminreg'}>
           <Button  variant="outlined" color="success">
             Add new
           </Button>

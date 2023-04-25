@@ -19,6 +19,7 @@ import Admintable from './Components/Tables/Admintable';
 import Newstable from './Components/Tables/Newstable';
 import Healthinfo from './Components/Donordetails/Healthinfo';
 import Accountinfo from './Components/Donordetails/Accountinfo';
+import Adminregister from './Pages/Adminregister/Adminregister';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
         <Route path='/contact' element={ <Protectedroute> <Contact /> </Protectedroute> } />
         <Route path='/profile' element={ <Protectedroute> <Profile /> </Protectedroute> } />
         <Route path='/admin' element={ <Protectedroute> <Admin /> </Protectedroute> } />
+        <Route path='/adminreg' element={<Adminregister/>}/>
         {/* Components routing */}
         <Route path='/donor' element={<Donortable/>}/>
         <Route path='/message' element={<Messagetable/>}/>

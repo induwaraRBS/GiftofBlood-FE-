@@ -1,17 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import"./Widget.css"
 import GroupIcon from '@mui/icons-material/Group';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import EmailIcon from '@mui/icons-material/Email';
+import { db } from '../Server/firebase';
+import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
 
 function Widgets({type}) {
-  let data;
+  
+  const[count,setCount]=useState('');
+  
+  useEffect(() => {
+    // Retrieve the count of users with usertype equal to "Donor" from Firebase database
+    const unsubscribe = getDocs(query
+      (collection(db,'users')
+      ,where('usertype', '==', 'Donor')))
+      .onSnapshot((snapshot) => {
+        setCount(snapshot.docs.length);
+      });
+    return () => {
+      // Unsubscribe from Firebase snapshot when component unmounts
+      unsubscribe();
+    };
+  }, []);
+  
+let data;
+
 
   switch(type){
     case"Donor":
       data = {
         title:"Donors",
-        count:"100",
+        count:count,
         icon:(
           <GroupIcon className='Icon'/>
         )
