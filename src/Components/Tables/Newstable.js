@@ -1,118 +1,156 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
+import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { TableVirtuoso } from 'react-virtuoso';
+import './Newstable.css';
+import { collection, deleteDoc, doc, getDocs, query } from 'firebase/firestore';
+import { db } from '../../Server/firebase';
 
-const sample = [
-  ['Frozen yoghurt', 159, 6.0, 24, 4.0],
-  ['Ice cream sandwich', 237, 9.0, 37, 4.3],
-  ['Eclair', 262, 16.0, 24, 6.0],
-  ['Cupcake', 305, 3.7, 67, 4.3],
-  ['Gingerbread', 356, 16.0, 49, 3.9],
-];
-
-function createData(id,news, date, image, status) {
-  return { id, news,date,image, status };
-}
 
 const columns = [
+  { id: 'id', label: 'ID', minWidth: 60,align:'center' },
+  { id: 'title', label: 'Title', minWidth: 80,align:'center' },
   {
-    width: 120,
-    label: 'News-ID',
-    dataKey: 'id',
+    id: 'content',
+    label: 'Content',
+    minWidth: 200,
+    align: 'center',
+    format: (value) => value.toLocaleString('en-US'),
   },
   {
-    width: 200,
-    label: 'News',
-    dataKey: 'news',
-    numeric: true,
+    id: 'Datetime',
+    label: 'Date & Time',
+    minWidth: 100,
+    align: 'center',
+    format: (value) => value.toLocaleString('en-US'),
   },
-  {
-    width: 120,
-    label: 'Date',
-    dataKey: 'date',
-    numeric: true,
-  },
-  {
-    width: 120,
-    label: 'Image',
-    dataKey: 'image',
-    numeric: true,
-  },
-  {
-    width: 120,
-    label: 'Status',
-    dataKey: 'status',
-    numeric: true,
-  },
+  
+  { id: 'Action', label: 'Action', minwidth: 170,
+  renderCell: (params) => {
+    const handleDelete = async (rows, setRows) => {
+      try {
+        await deleteDoc(doc(db, "users", params.id));
+        const updatedRows = rows.filter((row) => row.id !== params.id);
+        setRows(updatedRows);
+        alert("deleted one row");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+
+          return (
+      
+            <button className='deleteButton' onClick={() => handleDelete(params.rows, params.api.setRows)}>Delete</button>
+
+          )
+        }
+      },
 ];
 
-const rows = Array.from({ length: 200 }, (_, index) => {
-  const randomSelection = sample[Math.floor(Math.random() * sample.length)];
-  return createData(index, ...randomSelection);
-});
+// function createData(name, code, population, size) {
+//   const density = population / size;
+//   return { name, code, population, size, density };
+// }
 
-const VirtuosoTableComponents = {
-  Scroller: React.forwardRef((props, ref) => (
-    <TableContainer component={Paper} {...props} ref={ref} />
-  )),
-  Table: (props) => (
-    <Table {...props} sx={{ borderCollapse: 'separate', tableLayout: 'fixed' }} />
-  ),
-  TableHead,
-  TableRow: ({ item: _item, ...props }) => <TableRow {...props} />,
-  TableBody: React.forwardRef((props, ref) => <TableBody {...props} ref={ref} />),
-};
+const rows = [];
 
-function fixedHeaderContent() {
+
+export default function MessageTable() {
+  const[rows,setRows]=useState([]);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      
+      try{
+        const querySnapshot = await getDocs(query(collection(db, "News")));
+        setRows(querySnapshot.docs.map(doc => ({id: doc.id, ...doc.data()})));
+ 
+  }catch(err){
+        console.log(err)
+  }
+
+    };
+    fetchData()
+  },[]);
+
+  console.log(rows);
+
+
+
   return (
-    <TableRow>
-      {columns.map((column) => (
-        <TableCell
-          key={column.dataKey}
-          variant="head"
-          align={column.numeric || false ? 'right' : 'left'}
-          style={{ width: column.width }}
-          sx={{
-            backgroundColor: 'background.paper',
-          }}
-        >
-          {column.label}
-        </TableCell>
-      ))}
-    </TableRow>
-  );
-}
+  <div className='Page'>
+      
+      
+    <div className='table'>
+      <div className='message'>
 
-function rowContent(_index, row) {
-  return (
-    <React.Fragment>
-      {columns.map((column) => (
-        <TableCell
-          key={column.dataKey}
-          align={column.numeric || false ? 'right' : 'left'}
-        >
-          {row[column.dataKey]}
-        </TableCell>
-      ))}
-    </React.Fragment>
-  );
-}
-
-export default function Newstable() {
-  return (
-    <Paper style={{ height: 400, width: '100%' }}>
-      <TableVirtuoso
-        data={rows}
-        components={VirtuosoTableComponents}
-        fixedHeaderContent={fixedHeaderContent}
-        itemContent={rowContent}
+      </div>
+    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+      <TableContainer sx={{ maxHeight: 440 }}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
+            <TableRow>
+              {columns.map((column) => (
+                <TableCell
+                  key={column.id}
+                  align={column.align}
+                  style={{ minWidth: column.minWidth }}
+                >
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => {
+                return (
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === 'number'
+                            ? column.format(value)
+                            : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        rowsPerPageOptions={[10, 25, 100]}
+        component="div"
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </Paper>
+    </div>
+  </div>
   );
 }

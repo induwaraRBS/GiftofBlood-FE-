@@ -1,208 +1,71 @@
-import React ,{useState} from 'react';
-import ProfileItems from './ProfileItems';
-import { Nav,NavItem,NavLink,TabContent,TabPane,Row,Col, Card ,Button, Form, Label, Input, FormGroup} from 'reactstrap';
-import './Profile.css'
-import { useNavigate } from 'react-router-dom';
-import {db } from '../../Server/firebase';
-import { addDoc,collection,doc,serverTimestamp,setDoc } from 'firebase/firestore';
-import Donormenu from'../../Components/Donormenu'
-
+import React, { useEffect, useId, useState } from 'react';
+import { ListGroup, ListGroupItem } from 'reactstrap';
+import { useParams } from 'react-router-dom';
+import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'firebase/firestore';
+import { db } from '../../Server/firebase';
+import Donormenu from '../../Components/Donormenu';
+import'./Profile.css'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
+import EmailIcon from '@mui/icons-material/Email';
 function Profile() {
-    
-    const navigate = useNavigate();
-
-    const [error,setError] =useState('')
-
-
-    const[info,newinfo] = useState({
-      weight:'',
-      Updates:'',
-      Height:'',
-      email:'',
-    });
-
-    const handleInput = (e) =>{
-      const id =e.target.id;
-      const value = e.target.value;
-
-      newinfo(prevData => ({...prevData,[id]:value}));
-    }
-
-    const handleSubmit = async (e) => {
-      e.preventDefault()
-      try{
-       const res= await setDoc(doc(db,"healthudpates",res.healthupdates.uid),{
-          ...info,
-          timeStamp:serverTimestamp()
-        });
-      }catch(error){
+  const { userId } = useParams();
+  const [donorDetails, setDonorDetails] = useState(null);
+  useEffect(() => {
+    const fetchDonorDetails = async () => {
+      try {
+        const userDoc = await getDoc(doc(db, 'users', userId));
+        if (userDoc.exists()) {
+          setDonorDetails(userDoc.data());
+        }
+      } catch (error) {
         console.log(error);
       }
-    }
+    };
+
+    fetchDonorDetails();
+  }, [userId]);
+  console.log(donorDetails);
   
-
-    const handleLogout = async () => {
-    
-    };
-    
-    const[activeTab,setActiveTab] = useState('1');
-
-    const toggleTab = (tab) => {
-      if(activeTab !== tab) setActiveTab(tab);
-    };
- 
-  const handleProfileInfoClick = () => {
-    toggleTab('1');
-  };
-
-  const handleHealthDetailsClick = () => {
-    toggleTab('2');
-  };
-
-  const handleupdatehealth =() =>{
-    toggleTab('3');
-  };
-
-  const profilelist = [{
-    "id":1,
-    "name": {
-      "title": "Miss",
-      "first": "Jennie",
-      "last": "Nichols"
-    },
-    "location": {
-      "city": "Billings",
-      },
-      "email": "jennie.nichols@example.com",
-      "blood":"A+",
-      "dob": {
-        "date": "1992-03-08T15:13:16.688Z",
-        "age": 30
-      }
-  },
-  {
-    "id":2,
-    "name": {
-      "title": "Miss",
-      "first": "Maneeshi",
-      "last": "Veemansa"
-    },
-    "location": {
-      "city": "Bandarawela",
-      },
-      "email": "ManeeshiVeemansa@gmail.com",
-      "blood":"O+",
-      "dob": {
-        "date": "1999-055-15T15:13:16.688Z",
-        "age": 23
-      }
-  },
-  {
-    "id":3,
-    "name": {
-      "title": "Miss",
-      "first": "yashoda",
-      "last": "Asirimali"
-    },
-    "location": {
-      "city": "Diyathalawa",
-      },
-      "email": "Yashranathunga@example.com",
-      "blood":"A+",
-      "dob": {
-        "date": "1999-12-09T15:13:16.688Z",
-        "age": 23
-      }
-  }
-];
- 
-const ProfileListComponent = () => {
-  return profilelist.map((aName) =>{
-    return(
-    <ProfileItems
-    key={aName.id}
-    name={`${aName.name.first} ${aName.name.last}`}
-    city={aName.location.city}
-    email={aName.email}
-    blood={aName.blood}
-    dob={aName.dob.date} 
-    />
-   );
-  });
-}
+  
 
   return (
     <div className='profile_page'>
-      <Donormenu/>
-      
-      <hr/>
-      <div className=' profile_box'>
-            <Nav tabs>
-          <NavItem>
-            <NavLink
-              className={activeTab === '1' ? 'active' : ''}
-              onClick={handleProfileInfoClick}
-             
-            >
-             Profile Information
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink
-              className={activeTab === '2' ? 'active' : ''}
-              onClick={handleHealthDetailsClick}
-            >
-            Profile Information
-            </NavLink>
-          </NavItem>
-        </Nav>
-        <TabContent activeTab={activeTab}>
-    <TabPane tabId="1">
-      <Row>
-        <Col sm="12">
-        <hr/>
-          <h4>
-           Account Details
-          </h4>
-          <ul>
-            {ProfileListComponent()}
-              
-            </ul>
-        </Col>
-      </Row>
-    </TabPane>
-
-    <TabPane tabId="2">
-      <Row>
-        <Col sm="12">
-        <hr/>
-          <h4>
-           Health Details
-          </h4>
-          <ul>
-              {/* <ProfileItems name={`${profilelist.name.first} ${profilelist.name.last}`}
-              city={profilelist.location.city}
-              email={profilelist.email}
-              blood={profilelist.blood}
-              dob={profilelist.dob.date} 
-              /> */}
-             
-            </ul>
-        </Col>
-      </Row>
-    </TabPane>
-
-    </TabContent>
-
-
-.
-
+      <Donormenu />
+      <div className='profile'>
+      {donorDetails ? (
+        <ListGroup>
+          <hr/>
+          <h3>Profile Informations</h3>
+          <hr/>
+          <ListGroupItem>First Name: {donorDetails.firstName}</ListGroupItem>
+          <ListGroupItem>Last Name: {donorDetails.lastName}</ListGroupItem>
+          <ListGroupItem>NIC Number: {donorDetails.nicNumber}</ListGroupItem>
+          <ListGroupItem>Date Of Birth: {donorDetails.dateOfBirth}</ListGroupItem>
+          <ListGroupItem>Locatoion: {donorDetails.location}</ListGroupItem>
           
+          <hr/>
+          <h3>Health Informations</h3>
+          <hr/>
+          <ListGroupItem>Blood Group: {donorDetails.bloodGroup}</ListGroupItem>
+          <ListGroupItem>Weight: {donorDetails.weight}</ListGroupItem>
+          <ListGroupItem>Height: {donorDetails.height}</ListGroupItem>
+          <ListGroupItem>Health updates: {donorDetails.healthupdates}</ListGroupItem>
           
+          <hr/>
+          <h3>Account Verifications</h3>
+          <hr/>
+          <ListGroupItem>Email: {donorDetails.email}</ListGroupItem>
+          <ListGroupItem>Password: {donorDetails.password}</ListGroupItem>
+          <ListGroupItem>Contact: {donorDetails.contact}</ListGroupItem>
+
+        </ListGroup>
+      ) : (
+        <p>Loading...</p>
+      )}
       </div>
-        
     </div>
-  )
+  );
 }
 
-export default Profile
+export default Profile;

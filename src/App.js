@@ -20,6 +20,7 @@ import Newstable from './Components/Tables/Newstable';
 import Healthinfo from './Components/Donordetails/Healthinfo';
 import Accountinfo from './Components/Donordetails/Accountinfo';
 import Adminregister from './Pages/Adminregister/Adminregister';
+import Addnews from './Pages/Addnews/Addnews';
 
 function App() {
 
@@ -41,7 +42,7 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/news' element={<News />} />
         <Route path='/contact' element={ <Protectedroute> <Contact /> </Protectedroute> } />
-        <Route path='/profile' element={ <Protectedroute> <Profile /> </Protectedroute> } />
+        <Route path='/profile/:userId' element={ <Protectedroute> <Profile /> </Protectedroute> } />
         <Route path='/admin' element={ <Protectedroute> <Admin /> </Protectedroute> } />
         <Route path='/adminreg' element={<Adminregister/>}/>
         {/* Components routing */}
@@ -51,7 +52,8 @@ function App() {
         <Route path='/news' element={<Newstable/>}/>
         <Route path='/accountinfo' element={<Accountinfo/>}/>
         <Route path='/healthinfo' element={<Healthinfo/>}/>
-        {/* Done */}
+        <Route path='/addnews' element={<Addnews/>}/>
+        {/* Componenet routing end */}
         <Route exact path="/" element={<Home />} />
       </Routes>
    

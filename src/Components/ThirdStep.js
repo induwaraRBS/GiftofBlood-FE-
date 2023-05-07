@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { FormGroup, Label, Input} from 'reactstrap';
 
-
 function ThirdStep({values,handleChange}) {
-
   console.log(values);
-   
   return (
     <div>
          <form >
@@ -46,7 +43,6 @@ function ThirdStep({values,handleChange}) {
               <option value="Donor">Donor</option>
             </Input>
           </FormGroup>
-
           </form>
     </div>
   )

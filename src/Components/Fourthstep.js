@@ -6,7 +6,6 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 function Fourthstep({values,handleChange}) {
 
-  
   const{firstName,
     lastName,
     contact,
@@ -20,7 +19,6 @@ function Fourthstep({values,handleChange}) {
     email,
     password,
     usertype} = values
-
 
     useEffect(()=>{
       const createUser = async () =>{
@@ -51,16 +49,11 @@ function Fourthstep({values,handleChange}) {
         }catch(error){
           console.log(error)
         }
-      }
-      
-      createUser();
-      
+      }      
+      createUser();      
      },[values])
-
-
-
-
   console.log(values)
+
   return (
     <div>
       <h2>check your details</h2>

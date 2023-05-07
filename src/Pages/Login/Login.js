@@ -6,11 +6,11 @@ import {useNavigate} from 'react-router-dom';
 import app, { auth, db } from '../../Server/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, doc, getDoc } from 'firebase/firestore';
-
-
+import GoogleButton from 'react-google-button';
+import { UserAuth } from '../../Server/context/Authcontext';
 function Login ()  {
 
-  
+  const{googleSignIn} = UserAuth();
   const navigate = useNavigate();
   
   const [email, setEmail] = useState('');
@@ -23,8 +23,9 @@ function Login ()  {
     try{
 
       const userCredential=await signInWithEmailAndPassword(auth,email, password);
-     
-      const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
+      const userId = userCredential.user.uid;
+
+      const userDoc = await getDoc(doc(db, "users", userId));
       if (userDoc.exists()) {
         const userType = userDoc.data().usertype;
 
@@ -35,7 +36,7 @@ function Login ()  {
         } else if (userType === "Donor") {
           console.log("donor");
           alert("donor done");
-          navigate("/profile");
+          navigate(`/profile/${userId}`);
         } else {
           alert("User not found 404");
         }
@@ -45,9 +46,16 @@ function Login ()  {
       console.log(error);
     }
     
-    
-
   };
+
+  const handleGoogleSignIn = async( ) =>{
+    try{
+      await googleSignIn();
+    }catch(err){
+      console.log(err);
+    }
+  }
+
 
 const register = () => {
     navigate("/signup")
@@ -88,6 +96,7 @@ const register = () => {
                <Label className='signup' onClick={register}> Account?</Label>
                  </div>
                </Form>
+               <GoogleButton onClick={handleGoogleSignIn}/>
              </div>
            </div>
   );

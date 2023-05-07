@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import { FormGroup, Label, Input, Button } from 'reactstrap';
 
-
-
 function Secondstep({values,handleChange}) {
-
   console.log(values,handleChange);
-
   return (
     <div>
        <form >
@@ -33,7 +29,6 @@ function Secondstep({values,handleChange}) {
             placeholder="Enter your height in Centemeters"
           />
             </FormGroup>
-
             <FormGroup>
             <Label for="bloodGroup">Blood Group</Label>
             <Input
@@ -64,12 +59,9 @@ function Secondstep({values,handleChange}) {
              onChange={handleChange('healthupdates')}
              placeholder="Enter your Health Updates"
              />
-            </FormGroup>
-       
+            </FormGroup> 
       </form>       
     </div>
-
-
     )
 }
 
