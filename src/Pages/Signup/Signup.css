@@ -1,6 +1,6 @@
 .register-page {
   
-    background-color: #f3f6f8;
+    /* background-color: #f3f6f8; */
     height: 120%;
     display: flex;
     justify-content: center;
@@ -9,7 +9,7 @@
   
   .register-box {
     margin-top: 1px;
-    background-color: #ffffff;
+    background-color: #ffffff2c;
     height: 175vh;
     width: 550px;
     margin-left: 50px;

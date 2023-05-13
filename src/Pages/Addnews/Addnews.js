@@ -2,17 +2,13 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { db } from '../../Server/firebase';
-
+import { motion } from 'framer-motion';
 const Addnews = () => {
 
   const[data,setData]=useState({
     title:'',
     content:'',
   })
-
-
-
-  
 
   const handleChange = (e) => {
     const id = e.target.id;
@@ -37,6 +33,11 @@ const Addnews = () => {
   };
 
   return (
+   <motion.dev initial={{ opacity: 0 }}
+   animate={{ opacity: 1 }}
+   exit={{ opacity: 0 }}
+   transition={{ duration: 1 }}>
+
     <Container>
       <Row>
         <Col>
@@ -69,6 +70,7 @@ const Addnews = () => {
         </Col>
       </Row>
     </Container>
+   </motion.dev>
   );
 };
 

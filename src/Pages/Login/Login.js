@@ -8,11 +8,14 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, doc, getDoc } from 'firebase/firestore';
 import GoogleButton from 'react-google-button';
 import { UserAuth } from '../../Server/context/Authcontext';
+import { motion } from 'framer-motion';
+import redwhiteImage from '../../Assets/redwhite.jpg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Login ()  {
 
   const{googleSignIn} = UserAuth();
   const navigate = useNavigate();
-  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error,setError] = useState(false);
@@ -31,13 +34,14 @@ function Login ()  {
 
         if (userType === "Admin") {
           console.log("admin");
-          alert("admin done");
+          toast.success("Successfully Login",);
           navigate("/admin");
         } else if (userType === "Donor") {
           console.log("donor");
-          alert("donor done");
+          toast.success("Successfully Login");
           navigate(`/profile/${userId}`);
         } else {
+          toast.error("Error")
           alert("User not found 404");
         }
       }
@@ -60,12 +64,14 @@ function Login ()  {
 const register = () => {
     navigate("/signup")
 };
-
-
-
-       
+ 
        return (
-         <div className="login-page">
+         <motion.div className="login-page"
+         style={{ backgroundImage: `url(${redwhiteImage})`}} 
+         initial={{ opacity: 0 }}
+         animate={{ opacity: 1 }}
+         exit={{ opacity: 0 }}
+         transition={{ duration: 1 }}>
              <div className="login-box">
                <h2>Sign in </h2><LoginIcon></LoginIcon>
                <Form onSubmit={handleSubmit}>
@@ -90,6 +96,7 @@ const register = () => {
                      onChange={(e) => setPassword(e.target.value)} />
                  </FormGroup>
                  <Button color="danger">Login</Button>
+                
                  {error && <span>Wrong Email or Password!</span>}
                   <div className='Account'>
                  <Label className='label1'>Don't have an </Label>
@@ -98,7 +105,7 @@ const register = () => {
                </Form>
                <GoogleButton onClick={handleGoogleSignIn}/>
              </div>
-           </div>
+           </motion.div>
   );
        };
 

@@ -11,6 +11,8 @@ import Secondstep from '../../Components/Secondstep';
 import ThirdStep from '../../Components/ThirdStep';
 import Fourthstep from '../../Components/Fourthstep';
 import { useState } from 'react';
+import { motion } from 'framer-motion';
+import handtohandImage from '../../Assets/handtohand.jpg';
 
 const steps = ['Profile information ', 'Health information', 'Account Verfication','Confirm'];
  export default function HorizontalLinearStepper() {
@@ -53,7 +55,12 @@ const handleChange =(id) =>(e) => {
   };
 
   return (
-  <div className='register-page'>
+  <motion.div className='register-page'
+  style={{ backgroundImage: `url(${handtohandImage})`}}
+  initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}>
     <div className='register-box'>
     
     <Container>
@@ -120,7 +127,7 @@ const handleChange =(id) =>(e) => {
       </Box>
       </Container>
       </div>
-      </div>
+      </motion.div>
     );
 }
 

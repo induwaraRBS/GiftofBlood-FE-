@@ -1,4 +1,3 @@
-import { height } from '@mui/system';
 import React, { useEffect, useState } from 'react';
 import { Card,CardBody,CardTitle,CardSubtitle,CardText,Row,Col, Container} from 'reactstrap';
 import { Button } from 'reactstrap';
@@ -6,7 +5,9 @@ import './Body.css';
 import { db } from '../Server/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
+import { motion } from 'framer-motion';
 function Body() {
   const navigate = useNavigate();
   const[newsDetails,setNewsDetails] = useState([]);
@@ -35,10 +36,14 @@ function Body() {
     <><div className='body_Title'>
       <hr></hr>
       <h1>Latest News</h1>
-    </div><div className='body'>
+    </div>
+    <motion.div className='body'
+     initial={{ opacity: 0 }}
+     animate={{ opacity: 1 }}
+     transition={{ duration: 6  }}>
           <Container className="container1">
             {/* <Row className='row'> */}
-        {newsDetails.map((news) => (
+        {newsDetails?.map((news) => (
               <Col md={4} className='col'>
                 <Card className='card1' style={{
                    width: '20rem',
@@ -70,10 +75,16 @@ function Body() {
                   </CardBody>
                 </Card>
               </Col>
-        ))}
+        )
+        )}
+        {newsDetails.length === 0 && (
+           <Stack sx={{ color: 'grey.500' }} spacing={1} direction="row">
+           <CircularProgress color="success" />
+             </Stack>
+            )}
         {/* </Row> */}
           </Container>
-      </div></>
+      </motion.div></>
   )
 }
 

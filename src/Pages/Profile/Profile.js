@@ -5,16 +5,17 @@ import { collection, doc, getDoc, getDocs, onSnapshot, query, where } from 'fire
 import { db } from '../../Server/firebase';
 import Donormenu from '../../Components/Donormenu';
 import'./Profile.css'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
-import EmailIcon from '@mui/icons-material/Email';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
+import { motion } from 'framer-motion';
 function Profile() {
   const { userId } = useParams();
   const [donorDetails, setDonorDetails] = useState(null);
   useEffect(() => {
     const fetchDonorDetails = async () => {
       try {
-        const userDoc = await getDoc(doc(db, 'users', userId));
+        
+                const userDoc = await getDoc(doc(db, 'users', userId));
         if (userDoc.exists()) {
           setDonorDetails(userDoc.data());
         }
@@ -30,7 +31,11 @@ function Profile() {
   
 
   return (
-    <div className='profile_page'>
+    <motion.div className='profile_page'
+    initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}>
       <Donormenu />
       <div className='profile'>
       {donorDetails ? (
@@ -61,10 +66,12 @@ function Profile() {
 
         </ListGroup>
       ) : (
-        <p>Loading...</p>
+         <Stack sx={{ color: 'grey.500' }} spacing={1} direction="row">
+        <CircularProgress color="success" />
+          </Stack>
       )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

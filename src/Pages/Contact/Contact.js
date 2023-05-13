@@ -3,6 +3,7 @@ import {Container,Row,Col,Form,FormGroup,Label,Input,Button} from 'reactstrap';
 import "./Contact.css"
 import { addDoc, collection, doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from '../../Server/firebase';
+import { motion } from 'framer-motion';
 
 
 function Contact() {
@@ -40,7 +41,11 @@ function Contact() {
   
 
   return (
-    <div >
+    <motion.div 
+    initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}>
         <Container>
       <Row>
         <Col>
@@ -67,7 +72,7 @@ function Contact() {
         </Col>
       </Row>
     </Container>
-    </div>
+    </motion.div>
   )
 }
 
