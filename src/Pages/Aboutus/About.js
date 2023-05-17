@@ -7,7 +7,7 @@ function about() {
     <div className="aboutpage">
       <div className="about-box">
 
-      <Container className="conatinera">
+      <Container className="conatiner">
       <Row className="row1">
         <Col className="col2">
           <motion.h1

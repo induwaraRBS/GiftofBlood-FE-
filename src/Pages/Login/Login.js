@@ -3,14 +3,14 @@ import "./Login.css";
 import LoginIcon from '@mui/icons-material/Login';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import {useNavigate} from 'react-router-dom';
-import app, { auth, db } from '../../Server/firebase';
+import { auth, db } from '../../Server/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import GoogleButton from 'react-google-button';
 import { UserAuth } from '../../Server/context/Authcontext';
 import { motion } from 'framer-motion';
 import redwhiteImage from '../../Assets/redwhite.jpg';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function Login ()  {
 

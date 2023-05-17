@@ -3,8 +3,12 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { db } from '../../Server/firebase';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+
 const Addnews = () => {
 
+  const navigate=useNavigate();
   const[data,setData]=useState({
     title:'',
     content:'',
@@ -26,7 +30,8 @@ const Addnews = () => {
             timeStamp:serverTimestamp()
         });
         console.log("done");
-
+        toast.success("Success");
+        navigate("/admin");
     }catch(error){
         console.log(error)
     } 

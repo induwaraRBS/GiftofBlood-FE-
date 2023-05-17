@@ -39,7 +39,6 @@ function ThirdStep({values,handleChange}) {
               onChange={handleChange('usertype')}
             >
               <option value=""> Select your User type </option>
-              <option value="Admin">Admin</option>
               <option value="Donor">Donor</option>
             </Input>
           </FormGroup>

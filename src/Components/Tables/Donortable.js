@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import SideMenu from '../SideMenu';
 import'./Donortable.css';
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { collection, getDocs, where,query, deleteDoc, doc } from "firebase/firestore";
 import {db} from '../../Server/firebase'; 
-
+import { toast } from 'react-toastify';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 100 },
@@ -31,7 +30,7 @@ const columns = [
         await deleteDoc(doc(db, "users", params.id));
         const updatedRows = rows.filter((row) => row.id !== params.id);
         setRows(updatedRows);
-        alert("deleted one row");
+        toast.success("Contact Deleted Successfully");
       } catch (err) {
         console.log(err);
       }

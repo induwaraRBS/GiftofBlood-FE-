@@ -8,16 +8,17 @@ import EmailIcon from '@mui/icons-material/Email';
 import { Link } from 'react-router-dom';
 import { auth, db } from '../Server/firebase';
 import { useNavigate } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 function SideMenu() {
   const navigate= useNavigate();
 
   const handleLogout = async () => {
     try {
       await auth.signOut();
+      Swal.fire("Alert");
      navigate('/login');
       console.log("admin logout");
-      alert('Are you sure want to logout?')
+      // alert('Are you sure want to logout?')
     } catch (error) {
       console.log('Error logging out:', error);
     }
