@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
 import { FormGroup, Label, Input} from 'reactstrap';
 
-
-
 function Firststep({values,handleChange}) {
 
-
-console.log(values,handleChange);
-
+  console.log(values,handleChange);
   console.log("sharoiiii");
   return (
-   
     <div>
          <form >
           <h5>Profile Information</h5>

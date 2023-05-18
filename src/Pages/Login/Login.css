@@ -1,9 +1,11 @@
 .login-page {
+  background-size: cover;
+  background-position: center ;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f3f6f8;
+  /* background-color: #f3f6f8; */
   
 }
 
@@ -82,4 +84,8 @@ h2 {
    margin-left: 110px;
    display: flex;
    margin-top: -29px;
+ }
+
+ .googlebutton{
+  margin-left: 45px;
  }

@@ -3,7 +3,7 @@ import React from 'react'
 import "./Banner.css";
 import { Button } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
-
+import videobg from '../Assets/videobg.mp4';
 
 function Banner() {
   const navigate = useNavigate();
@@ -19,8 +19,7 @@ function Banner() {
   }
   return (
     <><div className='banner'>
-      <img src='https://images.unsplash.com/photo-1615461065624-21b562ee5566?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Ymxvb2QlMjBkb25hdGlvbnxlbnwwfHwwfHw%3D&w=1000&q=80' alt='' />
-
+      <video src={videobg} autoPlay loop muted/>
     </div>
       <div className='banner_text'>
         <h1> Donate Blood And Save a Life!</h1>

@@ -4,23 +4,34 @@ import GroupIcon from '@mui/icons-material/Group';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import EmailIcon from '@mui/icons-material/Email';
 import { db } from '../Server/firebase';
-import { collection, getDoc, getDocs, query, where } from 'firebase/firestore';
+import { collection, onSnapshot, query, where } from 'firebase/firestore';
 
 function Widgets({type}) {
   
-  const[count,setCount]=useState('');
-  
+  const[donorcount,setDonorcount]=useState('');
+  const[admincount,setAdmincount]=useState('');
+  const[messagecount,setMessagecount]=useState('');
+
   useEffect(() => {
-    // Retrieve the count of users with usertype equal to "Donor" from Firebase database
-    const unsubscribe = getDocs(query
-      (collection(db,'users')
-      ,where('usertype', '==', 'Donor')))
-      .onSnapshot((snapshot) => {
-        setCount(snapshot.docs.length);
-      });
+    const donorquery = query(collection(db,'users'), where('usertype', '==', 'Donor'));
+    const donorunsubscribe = onSnapshot(donorquery, (snapshot) => {
+      setDonorcount(snapshot.docs.length);
+    });
+
+    const adminquery = query(collection(db,'users'), where('usertype', '==', 'Admin'));
+    const adminunsubscribe = onSnapshot(adminquery, (snapshot) => {
+      setAdmincount(snapshot.docs.length);
+    });
+
+
+    const messageQuery = collection(db, 'Messages');
+    const messageunsubscribe = onSnapshot(messageQuery, (snapshot) => {
+      setMessagecount(snapshot.docs.length);
+    });
     return () => {
-      // Unsubscribe from Firebase snapshot when component unmounts
-      unsubscribe();
+      donorunsubscribe();
+      adminunsubscribe();
+      messageunsubscribe();
     };
   }, []);
   
@@ -31,7 +42,7 @@ let data;
     case"Donor":
       data = {
         title:"Donors",
-        count:count,
+        count:donorcount ,
         icon:(
           <GroupIcon className='Icon'/>
         )
@@ -40,7 +51,7 @@ let data;
       case "Admins":
       data={
         title:"Admins",
-        count:"10",
+        count:admincount,
         icon:(
           <AdminPanelSettingsIcon className='Icon'/>
         )
@@ -49,7 +60,7 @@ let data;
       case "Messages":
       data={
         title:"Messages",
-        count:"10",
+        count:messagecount,
         icon:(
           <EmailIcon className='Icon'/>
         )

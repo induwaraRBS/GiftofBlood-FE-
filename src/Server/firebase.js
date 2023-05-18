@@ -4,7 +4,6 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-
 const firebaseConfig = {
   apiKey:process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "gift-of-blood.firebaseapp.com",
@@ -21,6 +20,4 @@ export const db = getFirestore(app);
 export const auth = getAuth(app);
 const analytics = getAnalytics(app);
 export const storage = getStorage(app);
-
-
 export default app;

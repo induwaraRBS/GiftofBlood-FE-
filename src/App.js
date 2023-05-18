@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './App.css';
-import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router,Routes, Route,useLocation } from 'react-router-dom';
 import LoginJs from './Pages/Login/Login';  
 import Home from './Pages/Home/Home';
 import Header from './Components/Header';
@@ -17,31 +17,29 @@ import Donortable from './Components/Tables/Donortable';
 import Messagetable from './Components/Tables/Messagetable';
 import Admintable from './Components/Tables/Admintable';
 import Newstable from './Components/Tables/Newstable';
-import Healthinfo from './Components/Donordetails/Healthinfo';
-import Accountinfo from './Components/Donordetails/Accountinfo';
 import Adminregister from './Pages/Adminregister/Adminregister';
-
+import Addnews from './Pages/Addnews/Addnews';
+import {AnimatePresence} from 'framer-motion';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
-
-   
-    
+    const location =useLocation();
     const {currentUser} = useContext(Authcontext)
-    
+   
   return (
-    <><div className='page-container'>
-      <div className='content-wrap'>
-       
-       
-      
+    <>
+    <div className='page-container'>
+      <div className='content-wrap'> 
+      <ToastContainer position='top-center'/> 
       <Header />
-    
-      <Routes>
+      <AnimatePresence mode='wait'>
+      <Routes location={location} key={location.pathname}>
         <Route path='/about' element={<About />} />
         <Route path='/login' element={<LoginJs />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/news' element={<News />} />
         <Route path='/contact' element={ <Protectedroute> <Contact /> </Protectedroute> } />
-        <Route path='/profile' element={ <Protectedroute> <Profile /> </Protectedroute> } />
+        <Route path='/profile/:userId' element={ <Protectedroute> <Profile /> </Protectedroute> } />
         <Route path='/admin' element={ <Protectedroute> <Admin /> </Protectedroute> } />
         <Route path='/adminreg' element={<Adminregister/>}/>
         {/* Components routing */}
@@ -49,16 +47,16 @@ function App() {
         <Route path='/message' element={<Messagetable/>}/>
         <Route path='/admintable' element={<Admintable/>}/>
         <Route path='/news' element={<Newstable/>}/>
-        <Route path='/accountinfo' element={<Accountinfo/>}/>
-        <Route path='/healthinfo' element={<Healthinfo/>}/>
-        {/* Done */}
-        <Route exact path="/" element={<Home />} />
+        {/* <Route path='/accountinfo' element={<Accountinfo/>}/>  */}
+        <Route path='/addnews' element={<Addnews/>}/>
+        {/* Componenet routing end */}
+        <Route exact path="/" element={<Home/>} />
       </Routes>
-   
+      </AnimatePresence>
       <Footer />
-    
-    </div>
-      </div></>
+     </div>
+      </div></> 
+      
   );
 }
 

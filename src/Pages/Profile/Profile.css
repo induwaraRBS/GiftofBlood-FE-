@@ -1,37 +1,41 @@
 .profile_page{
-    margin-top: 0px;
+    
     display: flex;
-    justify-content: center;
-
+   
 }
 
-h2{
- margin-left: 100px;  
-}
-.profile_box > hr{
-    width: 50%;
-}
-.profile_box{
-    flex: 5 ;
+.profile{
+    height: 100%;
+    flex: 5;
     margin-top: 10px;
-    margin-left: 200px;
+    margin-left: 100px;
     margin-bottom: 5px;
-    width: 700px;
+    width: 100px;
     padding: 30px;
     border: 8px;
     border-radius: 8px;
     border-color: black;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.nav-link :hover{
-    color: red;
+
+.list-group-item{
+    border-radius:10px;
+    border-width: 2px;
+    width: 600px;
+    height: 50px;
+    margin-top: 8px;
+    margin-top: 2;
+}
+h3{
+    font-weight: 500;
+    color: gray;
+    padding-left: 50px;
 }
 
-.profile_settings{
-    margin-top: 60px;
-}
-
-.Settings_card{
-    margin-top: 20px;
-    margin-left: 5px;
+.icon1{
+    font-weight: 500;
+    display: flex;
+    font-size: 30px;
+    color: brown;
+  
 }

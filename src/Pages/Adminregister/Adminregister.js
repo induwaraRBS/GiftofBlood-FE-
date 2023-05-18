@@ -3,8 +3,12 @@ import { auth, db } from '../../Server/firebase';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Col, Container, Form, FormGroup, Input, Label, Row, Button } from 'reactstrap';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function RegisterPage() {
+
+  const navigate=useNavigate();
   const [data, setData] = useState({
     email: '',
     password: '',
@@ -39,6 +43,8 @@ function RegisterPage() {
         timeStamp: serverTimestamp(),
       });
       console.log('admin registered');
+      toast.success("Successfully Registered");
+      navigate("/admin");
     } catch (err) {
       console.log(err);
     }

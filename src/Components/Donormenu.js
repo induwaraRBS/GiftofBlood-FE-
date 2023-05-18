@@ -1,47 +1,44 @@
 import React from 'react'
 import "./Donormenu.css"
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import LogoutIcon from '@mui/icons-material/Logout';
-import EmailIcon from '@mui/icons-material/Email';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth, db } from '../Server/firebase';
+
+
 
 
 function SideMenu() {
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await auth.signOut(); // Call the signOut method from Firebase Auth
+      navigate('/login'); // Redirect to the login page after successful logout
+      console.log("user logout");
+      alert('Are you sure want to logout?')
+    } catch (error) {
+      console.log('Error logging out:', error);
+    }
+  };
+
+
   return (
-    <div className='center'>
+    <div className='center1'>
       <ul>
-        <Link to='/Profile'style={{textDecoration:"none"}} className='link' >
+        <Link to='/Profile/:id'style={{textDecoration:"none"}} className='link' >
         <li>
           <DashboardIcon className='icon'/>
           <span>Profile</span>
         </li>
         </Link>
-        <Link to='/healthinfo' style={{textDecoration:"none"}} className='link'>
-        <li>
-        <HealthAndSafetyIcon className='icon'/>
-          <span>Health Infromations</span>
-        </li>
-        </Link>
-        <Link to="/accountinfo" style={{textDecoration:"none"}} className='link'>
-        <li>
-          <AccountCircleIcon className='icon'/>
-          <span>Account Informations</span>
-        </li>
-        </Link>
-        {/* <Link to="/message" style={{textDecoration:"none"}} className='link'>
-        <li>
-          <EmailIcon className='icon'/>
-          <span>Messages</span>
-        </li>
-        </Link> */}
-        <Link to="" style={{textDecoration:"none"}} className='link'>
-        <li>
+        
+        
+        <li onClick={handleLogout} style={{ textDecoration:"none"  }} className='link1'>
           <LogoutIcon className='icon'/>
           <span>Logout</span>
         </li>
-        </Link>
       </ul>
     </div>
   )

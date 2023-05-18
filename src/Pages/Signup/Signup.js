@@ -10,19 +10,17 @@ import Firststep from '../../Components/Firststep';
 import Secondstep from '../../Components/Secondstep';
 import ThirdStep from '../../Components/ThirdStep';
 import Fourthstep from '../../Components/Fourthstep';
-
-
 import { useState } from 'react';
-
-
+import { motion } from 'framer-motion';
+import redwhiteImage from '../../Assets/redwhite.jpg';
+import './Signup.css';
+import volunteer1 from '../../Assets/volunteers1.jpg';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const steps = ['Profile information ', 'Health information', 'Account Verfication','Confirm'];
-
  export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = useState(0);
-
-
-  //data in the form
+  
   const[data,setData] = useState({
     firstName: '',
     lastName: '',
@@ -39,43 +37,37 @@ const steps = ['Profile information ', 'Health information', 'Account Verficatio
     usertype:'',
   })
 
-
-
   const isStepOptional = (step) => {
     return step === 1;
   };
-
 const handleChange =(id) =>(e) => {
-
   const value = e.target.value;
-
   setData(prevData => ({...prevData,[id]:value}));
 } 
 
-
-  const handleNext = () => {
-    
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    
+  const handleNext = () => {    
+    setActiveStep((prevActiveStep) => prevActiveStep + 1); 
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-
   const handleReset = () => {
     setActiveStep(0);
   };
 
   return (
-  <div className='register-page'>
+  <motion.div className='register-page'
+  initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}>
     <div className='register-box'>
     
     <Container>
       <h2>Create Your Account</h2> 
         <Box sx={{ bgcolor: '#f3f6f8'}} >
-
         <Stepper activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps = {};
@@ -96,9 +88,15 @@ const handleChange =(id) =>(e) => {
         {activeStep === steps.length ? (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
-              All Inforamtions Added - you&apos;re finished
-              <br></br>
-              Thank you for Joining With Us!
+              <div className='Joined'>
+              <h2>All Inforamtions Added - you&apos;</h2>
+             <h2> Thank you for Joining With Us!</h2>
+             <CheckCircleOutlineIcon className='check_icon' />
+              </div>
+              <div className='image'>
+              <img src={volunteer1}/>
+              </div>
+             
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Box sx={{ flex: '1 1 auto' }} />
@@ -128,20 +126,16 @@ const handleChange =(id) =>(e) => {
                   Skip
                 </Button>
               )} */}
-  
               <Button color="error" onClick={handleNext}  style={activeStep === 4 ? {display:'none'}:{}}>
                 {activeStep === steps.length - 1 ? 'Submit' : 'Next'}
               </Button>
             </Box>
           </React.Fragment>
         )}
- 
       </Box>
       </Container>
       </div>
-      </div>
+      </motion.div>
     );
-  
-
 }
 
