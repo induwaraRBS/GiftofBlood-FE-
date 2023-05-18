@@ -6,6 +6,7 @@ import { db } from '../../Server/firebase';
 import {motion} from 'framer-motion';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
+import savelifeImage from'../../Assets/savelife.jpg'
 function News() {
   const [newsDetails, setNewsDetails] = useState([]);
 
@@ -38,7 +39,7 @@ return (
         <div className='row g-0'>
           <div className='col-md-4'>
             <img
-              src='https://st2.depositphotos.com/3223379/5688/i/600/depositphotos_56880259-stock-photo-words-news.jpg'
+              src={savelifeImage}
               alt='abwudaw'
             />
           </div>
@@ -55,7 +56,7 @@ return (
       </div>
     ))}
     {newsDetails.length === 0 && (
-           <Stack sx={{ color: 'grey.500' }} spacing={1} direction="row">
+           <Stack  spacing={1} direction="row" className='circle'>
            <CircularProgress color="success" />
              </Stack>
             )}

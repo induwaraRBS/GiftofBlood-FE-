@@ -1,6 +1,6 @@
 .login-page {
   background-size: cover;
-  background-position: center center;
+  background-position: center ;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,4 +84,8 @@ h2 {
    margin-left: 110px;
    display: flex;
    margin-top: -29px;
+ }
+
+ .googlebutton{
+  margin-left: 45px;
  }

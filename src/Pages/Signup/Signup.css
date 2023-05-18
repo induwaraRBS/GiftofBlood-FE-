@@ -1,24 +1,36 @@
 .register-page {
-  
-    /* background-color: #f3f6f8; */
-    height: 120%;
+
+    background-position:center ;
+    background-color: #f3f6f8;
+    justify-content: center;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
   
+  .image>img{
+    height: 400px;
+    justify-content: center;
+    margin-left: 90px;
+    margin-top: 20px;
+    border-radius: 10px;
+  }
+
   .register-box {
-    margin-top: 1px;
-    background-color: #ffffff2c;
-    height: 175vh;
-    width: 550px;
+    margin-top: 10px;
+    background-color: #f3f3f3;
+    height: 100%;
+    width: 850px;
     margin-left: 50px;
-    padding: 40px;
+    /* padding: 40px; */
     border-radius: 8px;
     border: #b50000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
   }
-  
+ 
   .register-box h2 {
     margin-top: 0px;
     margin-bottom: 10px;
@@ -115,3 +127,12 @@
     border-color: #80bdff;
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
   }
+
+  .check_icon{
+    
+    margin-left: 400px;
+    color: green;
+}
+.Joined>h2{
+  margin-left: 230px;
+}

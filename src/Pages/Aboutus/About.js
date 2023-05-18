@@ -1,13 +1,14 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import { motion } from "framer-motion";
-import'./About.css'
+import'./About.css';
+import redwhiteImage from '../../Assets/redwhite.jpg';
 function about() {
   return (
-    <div className="aboutpage">
+    <div className="aboutpage" >
       <div className="about-box">
 
-      <Container className="conatiner">
+      <Container className="container">
       <Row className="row1">
         <Col className="col2">
           <motion.h1

@@ -67,7 +67,6 @@ const register = () => {
  
        return (
          <motion.div className="login-page"
-         style={{ backgroundImage: `url(${redwhiteImage})`}} 
          initial={{ opacity: 0 }}
          animate={{ opacity: 1 }}
          exit={{ opacity: 0 }}
@@ -103,7 +102,7 @@ const register = () => {
                <Label className='signup' onClick={register}> Account?</Label>
                  </div>
                </Form>
-               <GoogleButton onClick={handleGoogleSignIn}/>
+               <GoogleButton className='googlebutton' onClick={handleGoogleSignIn}/>
              </div>
            </motion.div>
   );

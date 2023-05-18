@@ -12,7 +12,10 @@ import ThirdStep from '../../Components/ThirdStep';
 import Fourthstep from '../../Components/Fourthstep';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import handtohandImage from '../../Assets/handtohand.jpg';
+import redwhiteImage from '../../Assets/redwhite.jpg';
+import './Signup.css';
+import volunteer1 from '../../Assets/volunteers1.jpg';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const steps = ['Profile information ', 'Health information', 'Account Verfication','Confirm'];
  export default function HorizontalLinearStepper() {
@@ -56,7 +59,6 @@ const handleChange =(id) =>(e) => {
 
   return (
   <motion.div className='register-page'
-  style={{ backgroundImage: `url(${handtohandImage})`}}
   initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -86,9 +88,15 @@ const handleChange =(id) =>(e) => {
         {activeStep === steps.length ? (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1 }}>
-              All Inforamtions Added - you&apos;re finished
-              <br></br>
-              Thank you for Joining With Us!
+              <div className='Joined'>
+              <h2>All Inforamtions Added - you&apos;</h2>
+             <h2> Thank you for Joining With Us!</h2>
+             <CheckCircleOutlineIcon className='check_icon' />
+              </div>
+              <div className='image'>
+              <img src={volunteer1}/>
+              </div>
+             
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
               <Box sx={{ flex: '1 1 auto' }} />
