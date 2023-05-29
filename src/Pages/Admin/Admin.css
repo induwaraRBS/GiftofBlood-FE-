@@ -1,38 +1,35 @@
-.home{
-    display: flex;
-    
+.home {
+  display: flex;
 }
 
-.homeContainer{
-            background-color:rgba(255, 255, 255, 0.081);
-            flex: 7;
-}   
-
-.Widgets{
-    display: flex;
-    padding: 20px;
-    gap: 20px;
+.homeContainer {
+  background-color: rgba(255, 255, 255, 0.081);
+  flex: 7;
 }
 
-.newstitle{
-    display: flex;
-    justify-content: space-between;
-    padding-right: 10px;
+.Widgets {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
 }
 
-.newstable{
+.newstitle {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.newstable {
   width: 99%;
   padding-left: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
-  -webkit-box-shadow:2px 4px 10px 1px rgba(0,0,0,0.47);
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
   box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
   justify-content: space-between;
 }
-.newstitle>h3{
-
-    font-weight: 500;
-    color: gray;
-    padding-left: 50px;
-
+.newstitle > h3 {
+  font-weight: 500;
+  color: gray;
+  padding-left: 50px;
 }

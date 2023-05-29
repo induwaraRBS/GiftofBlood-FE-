@@ -1,0 +1,16 @@
+.admintext {
+  margin-left: 100px;
+  font-weight: 400;
+  color: gray;
+}
+
+.adminbox {
+  margin-top: 10px;
+  width: 600px;
+  margin-left: 450px;
+  background-color: #fffefe;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border: #b50000;
+  border-radius: 8px;
+  border-color: #b50000;
+}

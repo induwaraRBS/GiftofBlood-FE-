@@ -1,45 +1,42 @@
-body{
-    height: 250px;
-    
+body {
+  height: 250px;
 }
-.body_Title{
-    margin-left: 150px;
+.body_Title {
+  margin-left: 150px;
 }
-.body_Title>hr{
-    height: 5px;
-    color: red;
-    width: 95%;
-    margin-top: 5px;
-}
-
-.container1{
-    display: flex;
-    justify-content: space-between;
-    padding: 0 80px;
-    margin-top: 20px; 
-}
- .card1{
-   
-    border:1px solid ;
-    border-Color:red;
-    margin-left: -170px; 
-    margin-top: 20px;
-    margin-right: 10px;
-} 
-
-.col{
-    margin-Right: 10px;
-}
-.card:hover{
-    box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253)!important;
+.body_Title > hr {
+  height: 5px;
+  color: red;
+  width: 95%;
+  margin-top: 5px;
 }
 
-.card-body{
-    padding: 2rem 2rem !important;
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 80px;
+  margin-top: 20px;
+}
+.card1 {
+  border: 1px solid;
+  border-color: red;
+  margin-left: -170px;
+  margin-top: 20px;
+  margin-right: 10px;
 }
 
-.body_button{
-    width: 15rem;
-    margin-top: 1rem;
+.col {
+  margin-right: 10px;
+}
+.card:hover {
+  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
 }
 
+.card-body {
+  padding: 2rem 2rem !important;
+}
+
+.body_button {
+  width: 15rem;
+  margin-top: 1rem;
+}

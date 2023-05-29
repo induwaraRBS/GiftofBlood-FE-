@@ -1,52 +1,47 @@
-.center1{
-
-    background-color:rgb(250, 217, 215);
-    flex: 1;
-    border-radius: 0.5px;
-    padding-left: 10px;
-    height: 163vh;
-
+.center1 {
+  background-color: rgb(250, 217, 215);
+  flex: 1;
+  border-radius: 0.5px;
+  padding-left: 10px;
+  height: 163vh;
 }
 
 .center1 > ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.link >li {
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    cursor: pointer;
-
+.link > li {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
 }
 
-.link>li>span{
-    font-size: 15px;
-    color: black;
-    margin-left:10px ;
+.link > li > span {
+  font-size: 15px;
+  color: black;
+  margin-left: 10px;
 }
 
-.link>li:hover{
-    
-    background-color:rgba(255, 0, 0, 0.348);
+.link > li:hover {
+  background-color: rgba(255, 0, 0, 0.348);
 }
-.link1{
-    margin-bottom: 5px;
-    display: flex;
-    align-items: center;
-    padding: 5px;
-    cursor: pointer;
+.link1 {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
 }
 
-.link1>span{
-    font-size: 15px;
-    color: black;
-    margin-left:10px ;
+.link1 > span {
+  font-size: 15px;
+  color: black;
+  margin-left: 10px;
 }
-.link1:hover{
-    
-    background-color:rgba(255, 0, 0, 0.348);
+.link1:hover {
+  background-color: rgba(255, 0, 0, 0.348);
 }

@@ -5,13 +5,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey:process.env.REACT_APP_FIREBASE_KEY,
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "gift-of-blood.firebaseapp.com",
   projectId: "gift-of-blood",
   storageBucket: "gift-of-blood.appspot.com",
   messagingSenderId: "956027932788",
   appId: "1:956027932788:web:f9ef95630e8a87681a4121",
-  measurementId: "G-RNNXS0WQJC"
+  measurementId: "G-RNNXS0WQJC",
 };
 
 // Initialize Firebase

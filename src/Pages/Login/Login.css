@@ -1,18 +1,17 @@
 .login-page {
   background-size: cover;
-  background-position: center ;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   /* background-color: #f3f6f8; */
-  
 }
 
 .login-box {
   width: 400px;
   padding: 40px;
-  background-color: #ffffff;
+  background-color: #fffefe;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
   border: #b50000;
   border-radius: 8px;
@@ -50,42 +49,38 @@ h2 {
   background-color: #006ba0;
   border-color: #006ba0;
 }
-.login_logo{
+.login_logo {
   display: flex;
   align-items: center;
   margin-right: 0px;
   margin-top: 10px;
 }
- .login_logo>h1{
-    display: flex;
-    margin-top: 0px;
-  
- }
- .login>img{
-
+.login_logo > h1 {
+  display: flex;
+  margin-top: 0px;
+}
+.login > img {
   height: 40px;
- }
- .Account{
-
+}
+.Account {
   margin-top: 5px;
-
- }
- span{
+}
+span {
   font-size: 12px;
   color: #b50000;
- }
- .label1{
+}
+.label1 {
   margin-top: 5px;
   display: flex;
- }
- .signup{
-   color: red;
-   cursor: pointer;
-   margin-left: 110px;
-   display: flex;
-   margin-top: -29px;
- }
+}
+.signup {
+  color: red;
+  cursor: pointer;
+  margin-left: 110px;
+  display: flex;
+  margin-top: -29px;
+}
 
- .googlebutton{
+.googlebutton {
   margin-left: 45px;
- }
+}

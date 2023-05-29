@@ -1,49 +1,48 @@
 form {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  form {
-    padding: 50px;
-  }
- h1{
-    margin-left: 100px;
-  }
+  max-width: 500px;
+  margin: 0 auto;
+}
 
-  input[type="text"],
-  input[type="email"],
-  textarea {
-    display: block;
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    font-size: 16px;
-  }
-  
+form {
+  padding: 50px;
+}
+.contacttext {
+  font-weight: 400;
+  margin-left: 450px;
+  color: gray;
+}
 
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
-  }
-  
+input[type="text"],
+input[type="email"],
+textarea {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
+}
 
-  button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: red;
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button[type="submit"]:hover {
-    background-color:  #b50000;
-  }
-  
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: red;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #b50000;
+}

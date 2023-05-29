@@ -1,16 +1,15 @@
-.imgbox{
-   
-    border-radius: 10px;
-   margin-top: 40px;
-    margin-bottom: 40px;
-   margin-left: 25%;
-   margin-right: 60px;
-   background-position: center;
-   background-image: url("https://www.unseenuk.org/wp-content/uploads/2022/01/Unseen-UK-Homepage-Twitter-preview-image-11.png");
-    height: 50vh ;
-    width: 50% ;
-    text-align: center;
-    padding-top: 80px;
+.imgbox {
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 25%;
+  margin-right: 60px;
+  background-position: center;
+  background-image: url("https://www.unseenuk.org/wp-content/uploads/2022/01/Unseen-UK-Homepage-Twitter-preview-image-11.png");
+  height: 50vh;
+  width: 50%;
+  text-align: center;
+  padding-top: 80px;
 }
 
 /* .imgbox > img {
@@ -21,28 +20,27 @@
     filter: blur(5px);
 } */
 
-.text{
-    border: 2px;
-    border-color: black;
-    position:absolute;
-    display: flex;
-    margin-top: 20px;
-    margin-left: 500px;
+.text {
+  border: 2px;
+  border-color: black;
+  position: absolute;
+  display: flex;
+  margin-top: 20px;
+  margin-left: 500px;
 }
 
-.text h5{
-    margin-top: 20px;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 100%;
+.text h5 {
+  margin-top: 20px;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
 
-.text h1{
-    margin-top: 20px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 100%;
+.text h1 {
+  margin-top: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
 }
-

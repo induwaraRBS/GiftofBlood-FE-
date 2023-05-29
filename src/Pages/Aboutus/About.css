@@ -1,65 +1,66 @@
 :root {
-    --primary-color: #e00707;
-    --secondary-color: #ffffff;
-  }
-   
-  .aboutpage {
-    height: 80vh;
-    /* font-family: 'Open Sans', sans-serif; */
-    /* color: var(--primary-color); */
-  }
-  .about-box{
-    display: flex;
-    margin-bottom: 0px;
-    margin-top: 0px;
-    width: 600px;
-    padding: 40px;
-    margin-left: 500px;
-    background-color: #ffffffb9;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-    border: #b50000;
-    border-radius: 8px;
-    border-color: #b50000;
-  }
-   h1,h2, h3, h4, h5, h6 {
-    font-weight: 400;
-    margin-bottom: 1rem;
-  } 
-  
-  p {
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-  }
-  
-  /* .container{
+  --primary-color: #e00707;
+  --secondary-color: #ffffff;
+}
+
+.aboutpage {
+  height: 80vh;
+  /* font-family: 'Open Sans', sans-serif; */
+  /* color: var(--primary-color); */
+}
+.about-box {
+  display: flex;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  width: 600px;
+  padding: 40px;
+  margin-left: 500px;
+  background-color: #ffffffb9;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border: #b50000;
+  border-radius: 8px;
+  border-color: #b50000;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* .container{
     max-width: 960px;
     margin: 0 auto;
     padding: 2rem 1rem;
   }
    */
-  
-  .row1 {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -15px;
-  }
-  
 
-  .col2 {
-    flex-basis: 0;
-    flex-grow: 1;
-    max-width: 100%;
-    padding: 0 15px;
-  }
-  
+.row1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
 
- h1 {
+.col2 {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  padding: 0 15px;
+}
+
+h1 {
   margin-right: 50px;
-    font-size: 2.5rem;
-   margin-top:5px;
-   margin-bottom: 5px;
-   margin-left: 20px;
-    /* color: var(--primary-color); */
-  } 
-  
-
+  font-size: 2.5rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 20px;
+  /* color: var(--primary-color); */
+}

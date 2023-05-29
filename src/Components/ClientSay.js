@@ -1,13 +1,7 @@
-import React from 'react';
-
-
+import React from "react";
 
 function ClientSay() {
-  return (
-    <div className='Container'>
-          
-    </div>
-  )
+  return <div className="Container"></div>;
 }
 
-export default ClientSay
+export default ClientSay;
